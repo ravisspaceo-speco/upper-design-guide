@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upper Route Planner — Design Guide v14</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fafbff;
+  --ink: #061b31;
+  --ink-2: #475569;
+  --ink-3: #64748d;
+  --line: #e5edf5;
+  --brand: #2563eb;
+  --brand-700: #1d4ed8;
+  --cyan: #06b6d4;
+  --violet: #7c3aed;
+  --font: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 64px 32px 120px; }
+
+/* ── Guide header ── */
+.guide-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 48px;
+  margin-bottom: 72px;
+}
+.g-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.10em;
+  text-transform: uppercase; color: var(--brand); margin-bottom: 12px;
+}
+.guide-header h1 {
+  font-size: clamp(32px, 4vw, 52px); font-weight: 600;
+  letter-spacing: -0.025em; line-height: 1.08; color: var(--ink); margin-bottom: 14px;
+}
+.guide-header p { font-size: 16px; color: var(--ink-2); max-width: 560px; line-height: 1.55; }
+.guide-meta { margin-top: 18px; font-size: 12px; color: var(--ink-3); font-family: var(--mono); }
+
+/* ── Section ── */
+.section { margin-bottom: 80px; }
+.s-label { font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: var(--brand); margin-bottom: 8px; }
+.s-title { font-size: 26px; font-weight: 600; letter-spacing: -0.022em; color: var(--ink); margin-bottom: 32px; }
+.s-desc { font-size: 14px; color: var(--ink-3); margin-bottom: 24px; line-height: 1.6; }
+hr.div { border: none; border-top: 1px solid var(--line); margin: 72px 0; }
+
+/* ── Grids ── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.g5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+
+/* ── Color swatches ── */
+.swatch-group { margin-bottom: 32px; }
+.sg-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin-bottom: 12px; }
+.swatch { border-radius: 10px; overflow: hidden; border: 1px solid rgba(6,27,49,0.07); }
+.sw-color { height: 72px; }
+.sw-info { background: #fff; padding: 10px 12px; }
+.sw-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+.sw-hex { font-size: 11px; color: var(--ink-3); font-family: var(--mono); margin-top: 2px; }
+.sw-use { font-size: 11px; color: var(--ink-3); margin-top: 3px; line-height: 1.4; }
+
+/* ── Type specimens ── */
+.type-row {
+  background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 10px;
+  display: flex; align-items: baseline; gap: 28px;
+}
+.t-meta { min-width: 190px; flex-shrink: 0; }
+.t-meta-label { font-size: 11px; font-weight: 600; color: var(--brand); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.t-meta-detail { font-size: 11.5px; color: var(--ink-3); font-family: var(--mono); line-height: 1.8; }
+.t-sample { flex: 1; }
+
+/* Type styles — exact from source */
+.tt-h1    { font-size: clamp(40px, 5.6vw, 76px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.04; color: var(--ink); }
+.tt-h2    { font-size: clamp(32px, 3.6vw, 44px); font-weight: 600; letter-spacing: -0.022em; line-height: 1.12; color: var(--ink); }
+.tt-final { font-size: clamp(44px, 5.6vw, 76px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.04; color: var(--ink); }
+.tt-ph3   { font-size: clamp(26px, 2.6vw, 36px); font-weight: 500; letter-spacing: -0.022em; line-height: 1.15; color: var(--ink); }
+.tt-hiw   { font-size: clamp(36px, 4vw, 52px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.05; color: var(--ink); }
+.tt-scale { font-size: clamp(36px, 4.4vw, 52px); font-weight: 600; letter-spacing: -0.024em; line-height: 1.08; color: var(--ink); }
+.tt-quote { font-size: clamp(19px, 1.7vw, 22px); font-weight: 500; letter-spacing: -0.018em; line-height: 1.4; color: var(--ink); }
+.tt-body  { font-size: clamp(16px, 1.3vw, 18px); font-weight: 400; line-height: 1.55; color: var(--ink-2); }
+.tt-prod  { font-size: 15.5px; font-weight: 400; line-height: 1.6; color: var(--ink-2); }
+.tt-eye   { font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: var(--brand-700); }
+.tt-cap   { font-size: 14px; font-weight: 400; line-height: 1.6; color: var(--ink-3); }
+.tt-mono  { font-size: 13px; font-family: var(--mono); font-weight: 400; color: var(--ink); }
+.tt-metric {
+  font-size: clamp(48px, 5.2vw, 76px); font-weight: 600; letter-spacing: -0.04em; line-height: 1;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #ffffff, #cfdcff);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Gradient text for scale H2 */
+.tt-scale-gradient {
+  font-style: normal;
+  background: linear-gradient(120deg, #061b31 0%, #c4b5fd 30%, #061b31 50%, #67e8f9 70%, #061b31 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* ── Buttons — exact from source ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: 6px;
+  font-family: var(--font); font-size: 15px; font-weight: 500; line-height: 1;
+  cursor: pointer; text-decoration: none;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  border: 1px solid transparent;
+}
+.btn-primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+.btn-primary:hover { background: var(--brand-700); box-shadow: rgba(50,50,93,.18) 0 8px 20px -8px; transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--ink); border-color: rgba(6,27,49,0.12); }
+.btn-secondary:hover { background: rgba(255,255,255,0.6); border-color: rgba(6,27,49,0.24); }
+
+/* ── Table ── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 9px 14px; background: #f1f5f9; color: var(--ink); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+td { padding: 9px 14px; border-top: 1px solid var(--line); color: var(--ink-2); vertical-align: top; }
+td:first-child { color: var(--ink); font-weight: 500; font-family: var(--mono); font-size: 12px; }
+tr:hover td { background: rgba(37,99,235,0.02); }
+code { font-family: var(--mono); font-size: 11.5px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: var(--ink); }
+
+/* ── Card ── */
+.box { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px 32px; }
+.box-dark { background: #04103a; border-radius: 16px; padding: 32px 36px; }
+
+/* ── Eyebrow pill — exact from source ── */
+.eyebrow-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; background: rgba(37,99,235,0.07);
+  border: 1px solid rgba(37,99,235,0.12); border-radius: 999px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--brand-700); backdrop-filter: blur(6px);
+}
+
+/* ── Live pill ── */
+.live-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px 4px 8px; background: rgba(34,197,94,0.12);
+  color: #16a34a; border-radius: 999px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 999px; background: #22c55e;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,.5); }
+  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+
+/* ── Nav preview ── */
+.nav-preview {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+  padding: 0 24px; display: flex; align-items: center; justify-content: space-between;
+  height: 60px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.nav-logo { font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+.nav-links { display: flex; gap: 28px; }
+.nav-link {
+  font-size: 13px; font-weight: 600; text-transform: uppercase; color: #282f38;
+  text-decoration: none; letter-spacing: 0.04em; line-height: 45px;
+}
+.nav-link:hover { color: #3293d3; }
+.nav-cta {
+  background: var(--brand); color: #fff; border: none; border-radius: 6px;
+  padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: var(--font);
+}
+
+/* ── HIW card (glassmorphism) — exact from source ── */
+.hiw-card-demo {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  backdrop-filter: blur(8px);
+}
+.hiw-visual-demo {
+  height: 160px; border-radius: 14px; margin: 10px 10px 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 30%, rgba(34,211,238,0.55), transparent 70%),
+    radial-gradient(ellipse 55% 35% at 45% 10%, rgba(59,130,246,0.50), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 55% 45%, rgba(37,99,235,0.55), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(34,211,238,0.50), transparent 70%),
+    radial-gradient(ellipse 65% 45% at 20% 85%, rgba(124,58,237,0.45), transparent 70%),
+    #0d1530;
+  position: relative; overflow: hidden;
+}
+.hiw-visual-demo::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(180deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1.5px, transparent 2px, transparent 6px);
+  mix-blend-mode: screen;
+}
+.hiw-body-demo { padding: 20px 20px 22px; }
+.hiw-body-demo h3 { font-size: 20px; letter-spacing: -0.015em; color: #fff; font-weight: 600; line-height: 1.25; margin-bottom: 8px; }
+.hiw-body-demo p { font-size: 14.5px; line-height: 1.55; color: rgba(230,240,255,0.7); }
+
+/* ── Story card — exact from source ── */
+.story-card-demo {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(6,27,49,0.08);
+  border-radius: 14px;
+  padding: 36px 32px 28px;
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.story-card-demo:hover {
+  transform: translateY(-3px);
+  border-color: rgba(6,27,49,0.16);
+  box-shadow: 0 1px 2px rgba(6,27,49,0.04), 0 18px 40px -10px rgba(6,27,49,0.14);
+}
+.story-card-demo::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.story-demo-blue::before  { background: linear-gradient(to right, #2563eb, #60a5fa); }
+.story-demo-violet::before { background: linear-gradient(to right, #7c3aed, #a78bfa); }
+.story-demo-cyan::before  { background: linear-gradient(to right, #06b6d4, #22d3ee); }
+.story-mark { font-family: Georgia, serif; font-size: 72px; line-height: 0.6; margin: 0 0 12px; height: 30px; }
+.story-demo-blue .story-mark { color: rgba(37,99,235,0.22); }
+.story-demo-violet .story-mark { color: rgba(124,58,237,0.22); }
+.story-demo-cyan .story-mark { color: rgba(6,182,212,0.28); }
+.story-quote { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.4; font-weight: 500; color: var(--ink); letter-spacing: -0.018em; margin: 0 0 24px; }
+.story-quote em {
+  font-style: normal; font-weight: 600;
+  padding: 1px 5px; border-radius: 3px;
+  background: linear-gradient(180deg, transparent 0%, transparent 30%, rgba(37,99,235,0.20) 30%, rgba(37,99,235,0.20) 100%);
+}
+.story-demo-violet .story-quote em { background: linear-gradient(180deg, transparent 0%, transparent 30%, rgba(124,58,237,0.22) 30%, rgba(124,58,237,0.22) 100%); }
+.story-demo-cyan .story-quote em { background: linear-gradient(180deg, transparent 0%, transparent 30%, rgba(6,182,212,0.26) 30%, rgba(6,182,212,0.26) 100%); }
+.story-foot-demo {
+  padding-top: 16px; border-top: 1px solid rgba(6,27,49,0.08);
+}
+.story-name-demo { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+.story-tag-demo { font-size: 11.5px; color: var(--ink-3); margin-top: 3px; }
+
+/* ── Scale mockup excerpt ── */
+.scale-mock-demo {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 -2px 20px rgba(0,0,0,.20);
+}
+.scale-chrome {
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+  background: rgba(0,0,0,0.20);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.scale-dots { display: flex; gap: 6px; }
+.scale-dots span { width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,0.18); }
+.scale-url {
+  flex: 1; background: rgba(255,255,255,0.04); border-radius: 5px;
+  padding: 5px 12px; font-family: var(--mono); font-size: 11px;
+  color: rgba(255,255,255,0.55); text-align: center; max-width: 240px; margin: 0 auto;
+}
+.scale-body {
+  padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 12px;
+}
+.scale-row-head {
+  display: grid; grid-template-columns: 80px 100px 1fr 60px;
+  gap: 16px; padding: 0 12px;
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.40);
+}
+.scale-row {
+  display: grid; grid-template-columns: 80px 100px 1fr 60px;
+  align-items: center; gap: 16px; padding: 12px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px;
+}
+.scale-tier {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.85);
+}
+.scale-tier::before { content: ""; width: 7px; height: 7px; border-radius: 999px; }
+.scale-solo .scale-tier::before { background: #22d3ee; }
+.scale-crew .scale-tier::before { background: #7c3aed; }
+.scale-large .scale-tier::before { background: #ec4899; }
+.scale-fleet { font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.92); }
+.scale-bar-wrap { height: 8px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+.scale-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #06b6d4 0%, #2563eb 50%, #7c3aed 100%);
+  box-shadow: 0 0 12px rgba(37,99,235,0.5);
+  border-radius: 999px;
+}
+.scale-stat { font-family: var(--mono); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.70); text-align: right; }
+
+/* ── Hero preview ── */
+.hero-preview {
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(37,99,235,0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #f5f8ff 0%, #fafbff 40%, #faf5ff 100%);
+  border-radius: 20px; padding: 64px 40px 48px;
+  text-align: center; border: 1px solid var(--line);
+}
+.hero-h1 {
+  margin: 20px auto 18px; max-width: 18ch;
+  font-size: clamp(40px, 5.6vw, 76px); font-weight: 500;
+  letter-spacing: -0.025em; line-height: 1.04; color: var(--ink);
+}
+.hero-sub { margin: 0 auto 32px; max-width: 560px; font-size: 17px; line-height: 1.55; color: var(--ink-2); }
+.hero-cta-row { display: flex; align-items: center; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Dark section preview ── */
+.dark-section {
+  background: #04103a; border-radius: 20px;
+  padding: 48px 40px; overflow: hidden; position: relative;
+}
+.dark-section::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 60% at 20% 50%, rgba(37,99,235,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 50%, rgba(6,182,212,0.10) 0%, transparent 65%);
+}
+.dark-mw-head { font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(230,240,255,0.65); margin-bottom: 14px; }
+.dark-h2 { font-size: clamp(28px, 3.6vw, 38px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; color: #fff; max-width: 600px; margin-bottom: 48px; }
+.dark-h2 .mw-bright { color: #fff; }
+.dark-h2 .mw-dim { color: rgba(230,240,255,0.55); }
+.dark-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; z-index: 1; }
+.dark-metric .num {
+  font-size: clamp(40px, 4vw, 60px); font-weight: 600; letter-spacing: -0.04em; line-height: 1;
+  background: linear-gradient(180deg, #ffffff, #cfdcff);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+.dark-metric .cap { font-size: 13px; color: rgba(230,240,255,0.65); line-height: 1.45; }
+
+/* ── Spacing ruler ── */
+.spacing-ruler { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+.sp-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.sp-bar { background: var(--brand); width: 36px; border-radius: 3px; opacity: 0.8; }
+.sp-val { font-size: 10.5px; font-family: var(--mono); color: var(--ink-3); }
+.sp-name { font-size: 10px; color: var(--ink-3); text-align: center; }
+
+/* ── Radii demo ── */
+.radius-card { overflow: hidden; border: 1px solid var(--line); }
+.radius-swatch { height: 52px; background: var(--brand); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 600; }
+.radius-info { background: #fff; padding: 10px 12px; }
+.radius-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+.radius-val { font-size: 11px; font-family: var(--mono); color: var(--ink-3); margin-top: 2px; }
+.radius-ctx { font-size: 11px; color: var(--ink-3); margin-top: 3px; }
+
+/* ── Shadow demo ── */
+.shadow-tile {
+  background: #fff; border-radius: 12px; padding: 22px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 100px; text-align: center;
+}
+.sh-card-hover { box-shadow: 0 1px 2px rgba(6,27,49,.04), 0 18px 40px -10px rgba(6,27,49,.14); }
+.sh-nav { box-shadow: 0 20px 25px -5px rgba(0,0,0,.10), 0 10px 10px -5px rgba(0,0,0,.04); }
+.sh-video-frame { box-shadow: 0 1px 2px rgba(10,37,64,.04), 0 30px 60px -20px rgba(10,37,64,.18), 0 50px 100px -40px rgba(99,91,255,.16); }
+.sh-trigger { box-shadow: 0 8px 24px rgba(10,10,30,.35), 0 2px 4px rgba(0,0,0,.18); }
+.sh-prompt { box-shadow: 0 12px 30px rgba(10,10,30,.40), 0 2px 6px rgba(0,0,0,.20); }
+.sh-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-top: 12px; }
+.sh-code { font-size: 10.5px; font-family: var(--mono); color: var(--ink-3); margin-top: 4px; line-height: 1.5; }
+.sh-placeholder { width: 64px; height: 44px; background: #f1f5f9; border-radius: 8px; border: 1px solid var(--line); }
+
+/* ── Industries dark card ── */
+.ind-main-demo {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 8px; padding: 24px 16px 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  position: relative; overflow: hidden;
+}
+.ind-main-demo::before {
+  content: ""; position: absolute; inset: -20%;
+  background: radial-gradient(ellipse 85% 65% at 50% 0%, rgba(251,191,36,0.55) 0%, rgba(251,191,36,0.18) 40%, transparent 75%);
+  filter: blur(40px); z-index: 0;
+}
+.ind-name-demo { font-size: 15px; font-weight: 700; color: #fff; position: relative; z-index: 1; letter-spacing: -0.014em; }
+.ind-tile-demo {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 14px 8px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.ind-tile-demo span { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.92); }
+
+/* ── Gradient bar ── */
+.gradient-bar { height: 10px; border-radius: 999px; }
+
+@media (max-width: 768px) {
+  .g4, .g5 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(2, 1fr); }
+  .type-row { flex-direction: column; gap: 10px; }
+  .t-meta { min-width: unset; }
+  .dark-metrics { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+}
+
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: A3 landscape; margin: 16mm 14mm; }
+
+  body { background: #fff !important; }
+  .wrap { padding: 0; max-width: 100%; }
+
+  /* Keep each section together, avoid mid-section breaks */
+  .section { break-inside: avoid; page-break-inside: avoid; margin-bottom: 48px; }
+  hr.div { break-after: page; page-break-after: always; border: none; margin: 0; }
+
+  /* Grids: tighten up for print */
+  .g4 { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .g3 { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .g2 { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .type-row { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Ensure dark backgrounds print */
+  .dark-section, .box-dark, .hiw-card-demo,
+  .hiw-visual-demo, .scale-mock-demo, .scale-chrome,
+  .scale-body, .hero-preview, .dark-metrics { background-color: #04103a !important; }
+
+  /* Remove hover/interactive transforms */
+  .btn:hover, .story-card-demo:hover { transform: none !important; box-shadow: none !important; }
+
+  /* Shrink hero preview for print */
+  .hero-preview { padding: 40px 28px; }
+
+  /* Tighten type-row for print */
+  .type-row { padding: 16px 20px; }
+  .t-meta { min-width: 160px; }
+
+  /* Keep table rows together */
+  tr { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Nav links visible in print */
+  .nav-links { display: flex !important; }
+
+  /* Hide animation-only elements */
+  .live-dot { animation: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ─── HEADER ─── -->
+<div class="guide-header">
+  <div class="g-eyebrow">Design System</div>
+  <h1>Upper Route Planner<br>Design Guide</h1>
+  <p>Visual language and design token reference extracted from <code style="font-family:var(--mono);font-size:13px;background:#f1f5f9;padding:2px 6px;border-radius:4px;">home-v14-working copy.html</code> — exact CSS values, no approximations.</p>
+  <div class="guide-meta">Source: home-v14-working copy.html &nbsp;·&nbsp; Generated: 2026-05-07 &nbsp;·&nbsp; Stack: Inter + JetBrains Mono + GeneratePress child theme</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     01 — COLORS
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">01 — Colors</div>
+  <div class="s-title">Color System</div>
+
+  <!-- CSS tokens -->
+  <div class="box" style="margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;">CSS Custom Properties (:root)</div>
+    <pre style="font-family:var(--mono);font-size:12.5px;color:var(--ink);line-height:2;background:#f8faff;padding:20px;border-radius:8px;overflow-x:auto;">:root {
+  --bg:       <span style="color:#2563eb;">#fafbff</span>;   /* page background */
+  --ink:      <span style="color:#2563eb;">#061b31</span>;   /* primary text */
+  --ink-2:    <span style="color:#2563eb;">#475569</span>;   /* body paragraphs */
+  --ink-3:    <span style="color:#2563eb;">#64748d</span>;   /* muted / captions */
+  --line:     <span style="color:#2563eb;">#e5edf5</span>;   /* borders, dividers */
+  --brand:    <span style="color:#2563eb;">#2563eb</span>;   /* primary CTA */
+  --brand-700:<span style="color:#2563eb;">#1d4ed8</span>;   /* button hover */
+  --cyan:     <span style="color:#06b6d4;">#06b6d4</span>;   /* Solo accent */
+  --violet:   <span style="color:#7c3aed;">#7c3aed</span>;   /* Crew / AI accent */
+  --font:     'Inter', system-ui, sans-serif;
+  --mono:     'JetBrains Mono', ui-monospace, monospace;
+}</pre>
+  </div>
+
+  <div class="swatch-group">
+    <div class="sg-label">Brand</div>
+    <div class="g4">
+      <div class="swatch"><div class="sw-color" style="background:#2563eb;"></div><div class="sw-info"><div class="sw-name">Brand Blue</div><div class="sw-hex">#2563eb · --brand</div><div class="sw-use">Primary buttons, links, CTAs, eyebrow accents</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#1d4ed8;"></div><div class="sw-info"><div class="sw-name">Brand Hover</div><div class="sw-hex">#1d4ed8 · --brand-700</div><div class="sw-use">Button hover state</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#06b6d4;"></div><div class="sw-info"><div class="sw-name">Cyan</div><div class="sw-hex">#06b6d4 · --cyan</div><div class="sw-use">Solo product, glow accents</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#7c3aed;"></div><div class="sw-info"><div class="sw-name">Violet</div><div class="sw-hex">#7c3aed · --violet</div><div class="sw-use">Crew / AI product, field service</div></div></div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="sg-label">Text (Ink Scale)</div>
+    <div class="g4">
+      <div class="swatch"><div class="sw-color" style="background:#061b31;"></div><div class="sw-info"><div class="sw-name">Ink</div><div class="sw-hex">#061b31 · --ink</div><div class="sw-use">All headings, primary text</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#475569;"></div><div class="sw-info"><div class="sw-name">Ink 2</div><div class="sw-hex">#475569 · --ink-2</div><div class="sw-use">Body copy, product text</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#64748d;"></div><div class="sw-info"><div class="sw-name">Ink 3</div><div class="sw-hex">#64748d · --ink-3</div><div class="sw-use">Captions, metadata, mono labels</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#e5edf5;border-bottom:1px solid #d1dce8;"></div><div class="sw-info"><div class="sw-name">Line</div><div class="sw-hex">#e5edf5 · --line</div><div class="sw-use">Borders, dividers, card outlines</div></div></div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="sg-label">Backgrounds</div>
+    <div class="g4">
+      <div class="swatch"><div class="sw-color" style="background:#fafbff;border-bottom:1px solid #e5edf5;"></div><div class="sw-info"><div class="sw-name">Page Base</div><div class="sw-hex">#fafbff · --bg</div><div class="sw-use">Body background</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#f5f8ff;border-bottom:1px solid #e5edf5;"></div><div class="sw-info"><div class="sw-name">Hero Start</div><div class="sw-hex">#f5f8ff</div><div class="sw-use">Top of page gradient</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#04103a;"></div><div class="sw-info"><div class="sw-name">Dark Navy</div><div class="sw-hex">#04103a</div><div class="sw-use">Metrics, HIW, Scale sections</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#0d1530;"></div><div class="sw-info"><div class="sw-name">Dark Card</div><div class="sw-hex">#0d1530</div><div class="sw-use">HIW visual backgrounds</div></div></div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="sg-label">Semantic</div>
+    <div class="g4">
+      <div class="swatch"><div class="sw-color" style="background:#22c55e;"></div><div class="sw-info"><div class="sw-name">Success / Live</div><div class="sw-hex">#22c55e</div><div class="sw-use">Live dot, success indicators</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#16a34a;"></div><div class="sw-info"><div class="sw-name">Success Text</div><div class="sw-hex">#16a34a</div><div class="sw-use">Live pill text color</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#4ade80;"></div><div class="sw-info"><div class="sw-name">Success Bright</div><div class="sw-hex">#4ade80</div><div class="sw-use">POD pill on dark sections</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#ed1c24;"></div><div class="sw-info"><div class="sw-name">Error</div><div class="sw-hex">#ed1c24</div></div></div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="sg-label">Product & Industry Accents</div>
+    <div class="g4">
+      <div class="swatch"><div class="sw-color" style="background:#3b82f6;"></div><div class="sw-info"><div class="sw-name">Crew Blue</div><div class="sw-hex">#3b82f6</div><div class="sw-use">Crew product bloom</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#f97316;"></div><div class="sw-info"><div class="sw-name">CNS Orange</div><div class="sw-hex">#f97316</div><div class="sw-use">CNS product bloom</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#14b8a6;"></div><div class="sw-info"><div class="sw-name">Fleet Teal</div><div class="sw-hex">#14b8a6</div><div class="sw-use">Fleet product bloom</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#fcd34d;"></div><div class="sw-info"><div class="sw-name">Waste Amber</div><div class="sw-hex">#fcd34d</div><div class="sw-use">Waste Hauling industry</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#93c5fd;"></div><div class="sw-info"><div class="sw-name">Distribution</div><div class="sw-hex">#93c5fd</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#c4b5fd;"></div><div class="sw-info"><div class="sw-name">Field Service</div><div class="sw-hex">#c4b5fd</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#f9a8d4;"></div><div class="sw-info"><div class="sw-name">Food & Catering</div><div class="sw-hex">#f9a8d4</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#ec4899;"></div><div class="sw-info"><div class="sw-name">Large Fleet</div><div class="sw-hex">#ec4899</div><div class="sw-use">Scale table — large tier</div></div></div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="sg-label">Story Card Gradients (top accent bar, 3px)</div>
+    <div class="g3">
+      <div class="swatch"><div class="sw-color" style="background:linear-gradient(to right,#2563eb,#60a5fa);height:48px;"></div><div class="sw-info"><div class="sw-name">Pelican</div><div class="sw-hex">linear-gradient(→ #2563eb, #60a5fa)</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:linear-gradient(to right,#7c3aed,#a78bfa);height:48px;"></div><div class="sw-info"><div class="sw-name">Maximed</div><div class="sw-hex">linear-gradient(→ #7c3aed, #a78bfa)</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:linear-gradient(to right,#06b6d4,#22d3ee);height:48px;"></div><div class="sw-info"><div class="sw-name">Victory</div><div class="sw-hex">linear-gradient(→ #06b6d4, #22d3ee)</div></div></div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="sg-label">Gradient Text Styles</div>
+    <div class="g2">
+      <div class="box" style="padding:20px;">
+        <div style="font-size:11px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;">Metrics Numbers (dark section)</div>
+        <div style="font-size:48px;font-weight:600;letter-spacing:-0.04em;line-height:1;background:linear-gradient(180deg,#ffffff,#cfdcff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-color:#04103a;padding:16px;border-radius:8px;">10,000+</div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--ink-3);margin-top:10px;">linear-gradient(180deg, #ffffff, #cfdcff)</div>
+      </div>
+      <div class="box" style="padding:20px;">
+        <div style="font-size:11px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;">Scale H2 Emphasis (animated)</div>
+        <div style="font-size:36px;font-weight:600;letter-spacing:-0.024em;line-height:1.08;background:#04103a;padding:16px;border-radius:8px;">
+          Built for <span style="background:linear-gradient(120deg,#ffffff 0%,#c4b5fd 30%,#ffffff 50%,#67e8f9 70%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">every scale</span>
+        </div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--ink-3);margin-top:10px;">linear-gradient(120deg, #fff → #c4b5fd → #fff → #67e8f9 → #fff)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+
+<!-- ═══════════════════════════════════════════════════════
+     02 — TYPOGRAPHY
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">02 — Typography</div>
+  <div class="s-title">Type System</div>
+
+  <!-- Font families -->
+  <div class="g2" style="margin-bottom:28px;">
+    <div class="box">
+      <div style="font-size:11px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Primary UI Font</div>
+      <div style="font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">Inter</div>
+      <div style="font-size:12px;color:var(--ink-3);font-family:var(--mono);margin-top:4px;margin-bottom:16px;">'Inter', system-ui, -apple-system, Segoe UI, sans-serif</div>
+      <div style="font-size:20px;font-weight:400;color:var(--ink);line-height:1.5;">
+        Aa Bb Cc Dd Ee Ff Gg Hh Ii<br>
+        <span style="font-weight:300;">Light 300</span> &nbsp; <span style="font-weight:400;">Regular 400</span><br>
+        <span style="font-weight:500;">Medium 500</span> &nbsp; <span style="font-weight:600;">SemiBold 600</span><br>
+        <span style="font-weight:700;">Bold 700</span> &nbsp; <span style="font-weight:800;">ExtraBold 800</span>
+      </div>
+    </div>
+    <div class="box">
+      <div style="font-size:11px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Monospace Font</div>
+      <div style="font-size:22px;font-weight:700;color:var(--ink);font-family:var(--mono);">JetBrains Mono</div>
+      <div style="font-size:12px;color:var(--ink-3);font-family:var(--mono);margin-top:4px;margin-bottom:16px;">'JetBrains Mono', ui-monospace, SFMono-Regular, monospace</div>
+      <div style="font-size:16px;font-family:var(--mono);color:var(--ink);line-height:2;">
+        Used for: metrics, KPIs, URL bars,<br>scale mockup, trigger IDs, timestamps<br>
+        <span style="font-weight:400;">Weights loaded: 400, 500</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Type scale -->
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Hero H1</div><div class="t-meta-detail">clamp(40px, 5.6vw, 76px)<br>weight: 500<br>tracking: -0.025em<br>leading: 1.04<br>color: --ink</div></div><div class="t-sample"><div class="tt-h1">Deliver smarter,<br>faster, together.</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Section H2 (locked)</div><div class="t-meta-detail">clamp(32px, 3.6vw, 44px)<br>weight: 600<br>tracking: -0.022em<br>leading: 1.12<br>color: --ink</div></div><div class="t-sample"><div class="tt-h2">Optimize every route, on every run</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Final CTA H2</div><div class="t-meta-detail">clamp(44px, 5.6vw, 76px)<br>weight: 500<br>tracking: -0.025em<br>leading: 1.04<br>Same scale as Hero H1</div></div><div class="t-sample"><div class="tt-final">Start routing<br>smarter today.</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Product H3</div><div class="t-meta-detail">clamp(26px, 2.6vw, 36px)<br>weight: 500<br>tracking: -0.022em<br>leading: 1.15<br>color: --ink</div></div><div class="t-sample"><div class="tt-ph3">Upper Route Planner Crew</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">HIW Title</div><div class="t-meta-detail">clamp(36px, 4vw, 52px)<br>weight: 600<br>tracking: -0.025em<br>leading: 1.05<br>color: #fff (dark bg)</div></div><div class="t-sample"><div class="tt-hiw">How Upper works</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Scale H2</div><div class="t-meta-detail">clamp(36px, 4.4vw, 52px)<br>weight: 600<br>tracking: -0.024em<br>leading: 1.08<br>Gradient em on dark bg</div></div><div class="t-sample"><div class="tt-scale">Built for <em class="tt-scale-gradient">every scale</em></div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Metrics Number</div><div class="t-meta-detail">clamp(48px, 5.2vw, 76px)<br>weight: 600<br>tracking: -0.04em<br>leading: 1<br>gradient: #fff → #cfdcff</div></div><div class="t-sample" style="background:#04103a;border-radius:8px;padding:16px;"><div class="tt-metric">98.4%</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Story Quote</div><div class="t-meta-detail">clamp(19px, 1.7vw, 22px)<br>weight: 500<br>tracking: -0.018em<br>leading: 1.4<br>color: --ink</div></div><div class="t-sample"><div class="tt-quote">"Upper cut our planning time from <em style="font-style:normal;font-weight:600;padding:1px 4px;background:linear-gradient(180deg,transparent 0%,transparent 30%,rgba(37,99,235,.20) 30%,rgba(37,99,235,.20) 100%);">2 hours to 8 minutes</em> every morning."</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Body (locked)</div><div class="t-meta-detail">clamp(16px, 1.3vw, 18px)<br>weight: 400<br>leading: 1.55<br>color: --ink-2</div></div><div class="t-sample"><div class="tt-body">Upper Route Planner helps dispatch teams plan and optimize delivery routes in minutes — reducing drive time, fuel costs, and missed deliveries across your entire operation.</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Product Body</div><div class="t-meta-detail">15.5px / weight: 400<br>leading: 1.6<br>color: --ink-2<br>max-width: 520px</div></div><div class="t-sample"><div class="tt-prod">Automatically plan the most efficient multi-stop route, assign drivers, and track every delivery in real time — all from one dashboard.</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Eyebrow</div><div class="t-meta-detail">11px / weight: 600<br>tracking: +0.10em<br>text-transform: uppercase<br>color: --brand-700</div></div><div class="t-sample"><div class="tt-eye">Route optimization platform</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Caption / Muted</div><div class="t-meta-detail">14px / weight: 400<br>leading: 1.6<br>color: --ink-3</div></div><div class="t-sample"><div class="tt-cap">Trusted by 10,000+ delivery teams worldwide · Plans from $9.99/month</div></div></div>
+
+  <div class="type-row"><div class="t-meta"><div class="t-meta-label">Monospace</div><div class="t-meta-detail">12–13px / JetBrains Mono<br>weight: 400–600<br>color: --ink or --ink-3</div></div><div class="t-sample"><div class="tt-mono">https://my.upperinc.com/routeplan/optimize?v=14</div></div></div>
+</div>
+
+<hr class="div">
+
+
+<!-- ═══════════════════════════════════════════════════════
+     03 — BUTTONS
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">03 — Buttons</div>
+  <div class="s-title">Button System</div>
+
+  <div class="box" style="margin-bottom:20px;">
+    <div style="margin-bottom:28px;">
+      <div style="font-size:11px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;">Light Background</div>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <button class="btn btn-primary">Get started free</button>
+        <button class="btn btn-secondary">Watch the demo →</button>
+        <button class="btn btn-secondary">See pricing →</button>
+      </div>
+    </div>
+    <div style="background:#04103a;border-radius:10px;padding:24px 20px;margin-bottom:0;">
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;">Dark Background (HIW CTA)</div>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <a style="display:inline-flex;align-items:center;gap:6px;padding:12px 22px;border-radius:6px;background:#2563eb;color:#fff;font-size:15px;font-weight:500;text-decoration:none;font-family:var(--font);">Start your free trial →</a>
+        <button class="btn btn-secondary" style="background:transparent;color:#fff;border-color:rgba(255,255,255,0.18);">Learn more</button>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Property</th><th>Primary (.btn-primary)</th><th>Secondary (.btn-secondary)</th><th>HIW CTA (.hiw-cta)</th></tr>
+    <tr><td>background</td><td><code>var(--brand) = #2563eb</code></td><td><code>transparent</code></td><td><code>#2563eb</code></td></tr>
+    <tr><td>color</td><td><code>#ffffff</code></td><td><code>var(--ink) = #061b31</code></td><td><code>#ffffff</code></td></tr>
+    <tr><td>border</td><td><code>1px solid transparent</code></td><td><code>1px solid rgba(6,27,49,0.12)</code></td><td><code>none</code></td></tr>
+    <tr><td>border-radius</td><td><code>6px</code></td><td><code>6px</code></td><td><code>6px</code></td></tr>
+    <tr><td>padding</td><td><code>12px 20px</code></td><td><code>12px 20px</code></td><td><code>12px 22px</code></td></tr>
+    <tr><td>font-size</td><td><code>15px</code></td><td><code>15px</code></td><td><code>15px</code></td></tr>
+    <tr><td>font-weight</td><td><code>500</code></td><td><code>500</code></td><td><code>500</code></td></tr>
+    <tr><td>hover bg</td><td><code>#1d4ed8</code></td><td><code>rgba(255,255,255,0.6)</code></td><td><code>#1d4ed8</code></td></tr>
+    <tr><td>hover shadow</td><td><code>rgba(50,50,93,.18) 0 8px 20px -8px</code></td><td>—</td><td>—</td></tr>
+    <tr><td>hover transform</td><td><code>translateY(-1px)</code></td><td>—</td><td>—</td></tr>
+    <tr><td>transition</td><td colspan="3"><code>background 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease</code></td></tr>
+  </table>
+</div>
+
+<hr class="div">
+
+
+<!-- ═══════════════════════════════════════════════════════
+     04 — COMPONENTS
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">04 — Components</div>
+  <div class="s-title">UI Components</div>
+
+  <!-- Nav -->
+  <div style="margin-bottom:32px;">
+    <div class="sg-label" style="margin-bottom:12px;">Navigation Bar</div>
+    <div class="nav-preview">
+      <div class="nav-logo">Upper</div>
+      <div class="nav-links">
+        <a class="nav-link" href="#">Products</a>
+        <a class="nav-link" href="#">Solutions</a>
+        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">Resources</a>
+      </div>
+      <button class="nav-cta">Get started</button>
+    </div>
+    <div style="margin-top:10px;">
+      <table>
+        <tr><th>Element</th><th>Value</th></tr>
+        <tr><td>bg</td><td><code>#ffffff</code></td></tr>
+        <tr><td>nav link color</td><td><code>#282f38</code> · hover: <code>#3293d3</code></td></tr>
+        <tr><td>nav link style</td><td><code>font-weight:600 · text-transform:uppercase · font-size:14px</code></td></tr>
+        <tr><td>mega-menu</td><td><code>bg:#fff · border:1px solid #e5e7eb · border-radius:16px</code></td></tr>
+        <tr><td>mega-menu shadow</td><td><code>0 20px 25px -5px rgba(0,0,0,.10), 0 10px 10px -5px rgba(0,0,0,.04)</code></td></tr>
+        <tr><td>mega-menu section labels</td><td><code>color:#843AB5 · uppercase · font-weight:600</code></td></tr>
+        <tr><td>mega-menu footer bar</td><td><code>linear-gradient(90deg, #F8F0FE 0%, #FFF 49.67%, #F8F0FE 99.33%)</code></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Eyebrow pill + live pill -->
+  <div style="margin-bottom:32px;">
+    <div class="sg-label" style="margin-bottom:12px;">Eyebrow Pill &amp; Live Badge</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+      <div class="eyebrow-pill">Route optimization platform</div>
+      <div class="eyebrow-pill">New · AI-powered dispatch</div>
+      <div class="live-pill"><span class="live-dot"></span> Live updates</div>
+    </div>
+    <div style="margin-top:12px;">
+      <table>
+        <tr><th>Eyebrow pill</th><th>Value</th></tr>
+        <tr><td>padding</td><td><code>6px 14px</code></td></tr>
+        <tr><td>background</td><td><code>rgba(37,99,235,0.07)</code></td></tr>
+        <tr><td>border</td><td><code>1px solid rgba(37,99,235,0.12)</code></td></tr>
+        <tr><td>border-radius</td><td><code>999px</code></td></tr>
+        <tr><td>font</td><td><code>11px · weight:600 · tracking:0.10em · uppercase</code></td></tr>
+        <tr><td>color</td><td><code>var(--brand-700) = #1d4ed8</code></td></tr>
+        <tr><td>backdrop-filter</td><td><code>blur(6px)</code></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Story cards -->
+  <div style="margin-bottom:32px;">
+    <div class="sg-label" style="margin-bottom:12px;">Story Cards</div>
+    <div class="g3">
+      <div class="story-card-demo story-demo-blue">
+        <div class="story-mark">"</div>
+        <div class="story-quote">"Upper cut our planning from <em>2 hours to 8 minutes</em> every morning."</div>
+        <div class="story-foot-demo"><div class="story-name-demo">Pelican Couriers</div><div class="story-tag-demo">Last-mile delivery · 12 drivers</div></div>
+      </div>
+      <div class="story-card-demo story-demo-violet">
+        <div class="story-mark">"</div>
+        <div class="story-quote">"We handle <em>3× more orders</em> with the same team since switching to Upper."</div>
+        <div class="story-foot-demo"><div class="story-name-demo">Maximed Express</div><div class="story-tag-demo">Medical distribution · 8 vehicles</div></div>
+      </div>
+      <div class="story-card-demo story-demo-cyan">
+        <div class="story-mark">"</div>
+        <div class="story-quote">"Route compliance went from <em>62% to 99%</em> in the first week."</div>
+        <div class="story-foot-demo"><div class="story-name-demo">Victory Logistics</div><div class="story-tag-demo">B2B distribution · 34 routes/day</div></div>
+      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <table>
+        <tr><th>Property</th><th>Value</th></tr>
+        <tr><td>background</td><td><code>#ffffff</code></td></tr>
+        <tr><td>border</td><td><code>1px solid rgba(6,27,49,0.08)</code></td></tr>
+        <tr><td>border-radius</td><td><code>14px</code></td></tr>
+        <tr><td>padding</td><td><code>36px 32px 28px</code></td></tr>
+        <tr><td>top accent bar</td><td><code>height: 3px</code> · color per card (blue/violet/cyan gradient)</td></tr>
+        <tr><td>hover transform</td><td><code>translateY(-3px)</code></td></tr>
+        <tr><td>hover shadow</td><td><code>0 1px 2px rgba(6,27,49,.04), 0 18px 40px -10px rgba(6,27,49,.14)</code></td></tr>
+        <tr><td>quote highlight em</td><td><code>bottom-30% marker-pen fill · rgba(37,99,235,.20)</code> per card color</td></tr>
+        <tr><td>quote font</td><td><code>Georgia, 'Times New Roman', serif · 72px</code> decorative mark</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIW Cards -->
+  <div style="margin-bottom:32px;">
+    <div class="sg-label" style="margin-bottom:12px;">How It Works Cards (Glassmorphism)</div>
+    <div class="g3">
+      <div class="hiw-card-demo">
+        <div class="hiw-visual-demo"></div>
+        <div class="hiw-body-demo">
+          <h3>Add your stops</h3>
+          <p>Import addresses from any spreadsheet, CRM, or type them in manually — Upper handles any format.</p>
+        </div>
+      </div>
+      <div class="hiw-card-demo">
+        <div class="hiw-visual-demo" style="background:radial-gradient(ellipse 60% 40% at 15% 20%,rgba(37,99,235,.55),transparent 70%),radial-gradient(ellipse 65% 45% at 30% 55%,rgba(124,58,237,.50),transparent 70%),radial-gradient(ellipse 65% 45% at 78% 30%,rgba(34,211,238,.55),transparent 70%),#0d1530;"></div>
+        <div class="hiw-body-demo">
+          <h3>Optimize in seconds</h3>
+          <p>Upper's algorithm builds the most efficient route sequence — accounting for time windows, priorities, and vehicle capacity.</p>
+        </div>
+      </div>
+      <div class="hiw-card-demo">
+        <div class="hiw-visual-demo" style="background:radial-gradient(ellipse 65% 45% at 30% 85%,rgba(124,58,237,.55),transparent 70%),radial-gradient(ellipse 60% 40% at 85% 55%,rgba(124,58,237,.55),transparent 70%),radial-gradient(ellipse 60% 40% at 60% 30%,rgba(34,211,238,.45),transparent 70%),#0b1530;"></div>
+        <div class="hiw-body-demo">
+          <h3>Dispatch &amp; track</h3>
+          <p>Send routes to drivers with one tap. Monitor every stop, ETA, and proof of delivery in real time.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <table>
+        <tr><th>Property</th><th>Value</th></tr>
+        <tr><td>background</td><td><code>rgba(255,255,255,0.04)</code></td></tr>
+        <tr><td>border</td><td><code>1px solid rgba(255,255,255,0.08)</code></td></tr>
+        <tr><td>border-radius</td><td><code>18px</code></td></tr>
+        <tr><td>backdrop-filter</td><td><code>blur(8px)</code></td></tr>
+        <tr><td>box-shadow</td><td><code>0 1px 2px rgba(0,0,0,0.2)</code></td></tr>
+        <tr><td>visual area border-radius</td><td><code>14px</code> (inner visual, margin: 12px 12px 0)</td></tr>
+        <tr><td>visual height</td><td><code>240px</code></td></tr>
+        <tr><td>scanline overlay</td><td><code>repeating-linear-gradient(180deg, rgba(255,255,255,.08) 0–1.5px, transparent 2–6px) · mix-blend-mode:screen</code></td></tr>
+        <tr><td>body padding</td><td><code>24px 24px 28px</code></td></tr>
+        <tr><td>h3</td><td><code>20px · weight:600 · tracking:-0.015em · color:#fff</code></td></tr>
+        <tr><td>p</td><td><code>14.5px · color:rgba(230,240,255,0.7)</code></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Scale mockup -->
+  <div style="margin-bottom:32px;">
+    <div class="sg-label" style="margin-bottom:12px;">Scale Section — Browser Mockup (dark)</div>
+    <div style="background:#04103a;border-radius:16px;padding:24px;">
+      <div class="scale-mock-demo" style="max-width:640px;margin:0 auto;">
+        <div class="scale-chrome">
+          <div class="scale-dots"><span></span><span></span><span></span></div>
+          <div class="scale-url">my.upperinc.com/dashboard</div>
+        </div>
+        <div class="scale-body">
+          <div class="scale-row-head"><span>Tier</span><span>Fleet</span><span>Utilization</span><span>Today</span></div>
+          <div class="scale-row scale-solo">
+            <div class="scale-tier">Solo</div>
+            <div class="scale-fleet">1 driver</div>
+            <div class="scale-bar-wrap"><div class="scale-bar-fill" style="width:62%;"></div></div>
+            <div class="scale-stat">24 stops</div>
+          </div>
+          <div class="scale-row scale-crew">
+            <div class="scale-tier">Crew</div>
+            <div class="scale-fleet">8 drivers</div>
+            <div class="scale-bar-wrap"><div class="scale-bar-fill" style="width:81%;"></div></div>
+            <div class="scale-stat">187 stops</div>
+          </div>
+          <div class="scale-row scale-large">
+            <div class="scale-tier">Large</div>
+            <div class="scale-fleet">40+ drivers</div>
+            <div class="scale-bar-wrap"><div class="scale-bar-fill" style="width:94%;"></div></div>
+            <div class="scale-stat">2,400 stops</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+
+<!-- ═══════════════════════════════════════════════════════
+     05 — BORDER RADIUS
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">05 — Shape</div>
+  <div class="s-title">Border Radius Scale</div>
+  <div class="g4">
+    <div class="radius-card" style="border-radius:5px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:#7c3aed;">5px</div>
+      <div class="radius-info"><div class="radius-label">Tag Badges</div><div class="radius-val">border-radius: 5px</div><div class="radius-ctx">Industry pill tags, status badges</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:6px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;">6px</div>
+      <div class="radius-info"><div class="radius-label">Buttons</div><div class="radius-val">border-radius: 6px</div><div class="radius-ctx">All CTA and nav buttons</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:7px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:#06b6d4;">7px</div>
+      <div class="radius-info"><div class="radius-label">Industry Icon</div><div class="radius-val">border-radius: 7px</div><div class="radius-ctx">Icon containers in industry grid</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:#475569;">8px</div>
+      <div class="radius-info"><div class="radius-label">Industry Tiles</div><div class="radius-val">border-radius: 8px</div><div class="radius-ctx">Industry grid cells</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:#1d4ed8;">10px</div>
+      <div class="radius-info"><div class="radius-label">HIW Trigger Row</div><div class="radius-val">border-radius: 10px</div><div class="radius-ctx">Trigger stack white cards</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:12px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:#7c3aed;">12px</div>
+      <div class="radius-info"><div class="radius-label">App Tiles</div><div class="radius-val">border-radius: 12px</div><div class="radius-ctx">HIW integration app tiles (56×56)</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:14px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:#06b6d4;">14px</div>
+      <div class="radius-info"><div class="radius-label">Cards / Browser</div><div class="radius-val">border-radius: 14px</div><div class="radius-ctx">Story cards, video frame, HIW visual, scale browser</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:16px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:#282f38;">16px</div>
+      <div class="radius-info"><div class="radius-label">Mega-menu / Tension</div><div class="radius-val">border-radius: 16px</div><div class="radius-ctx">Navigation dropdown, tension visual</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:18px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:#061b31;">18px</div>
+      <div class="radius-info"><div class="radius-label">HIW Cards</div><div class="radius-val">border-radius: 18px</div><div class="radius-ctx">How It Works glassmorphism cards</div></div>
+    </div>
+    <div class="radius-card" style="border-radius:28px;overflow:hidden;border:1px solid var(--line);">
+      <div class="radius-swatch" style="border-radius:0;background:linear-gradient(135deg,#2563eb,#06b6d4);">999px</div>
+      <div class="radius-info"><div class="radius-label">Pills / Dots</div><div class="radius-val">border-radius: 999px</div><div class="radius-ctx">Eyebrow pills, live dots, scale dots, browser dots</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+
+<!-- ═══════════════════════════════════════════════════════
+     06 — SHADOWS
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">06 — Elevation</div>
+  <div class="s-title">Box Shadow Reference</div>
+  <div class="g3">
+    <div>
+      <div class="shadow-tile sh-card-hover"><div class="sh-placeholder"></div></div>
+      <div class="sh-name">Card Hover (light)</div>
+      <div class="sh-code">0 1px 2px rgba(6,27,49,.04),<br>0 18px 40px -10px rgba(6,27,49,.14)</div>
+    </div>
+    <div>
+      <div class="shadow-tile sh-nav"><div class="sh-placeholder"></div></div>
+      <div class="sh-name">Navigation / Mega-menu</div>
+      <div class="sh-code">0 20px 25px -5px rgba(0,0,0,.10),<br>0 10px 10px -5px rgba(0,0,0,.04)</div>
+    </div>
+    <div>
+      <div class="shadow-tile sh-video-frame"><div class="sh-placeholder" style="width:80px;"></div></div>
+      <div class="sh-name">Hero Video Frame</div>
+      <div class="sh-code">0 1px 2px rgba(10,37,64,.04),<br>0 30px 60px -20px rgba(10,37,64,.18),<br>0 50px 100px -40px rgba(99,91,255,.16)</div>
+    </div>
+    <div>
+      <div class="shadow-tile sh-trigger" style="background:#fff;"><div class="sh-placeholder"></div></div>
+      <div class="sh-name">HIW Trigger Row</div>
+      <div class="sh-code">0 8px 24px rgba(10,10,30,.35),<br>0 2px 4px rgba(0,0,0,.18)</div>
+    </div>
+    <div>
+      <div class="shadow-tile sh-prompt" style="background:#fff;"><div class="sh-placeholder" style="background:#f5f0ff;border:1px solid rgba(126,34,206,.18);"></div></div>
+      <div class="sh-name">HIW Prompt Card</div>
+      <div class="sh-code">0 12px 30px rgba(10,10,30,.40),<br>0 2px 6px rgba(0,0,0,.20)</div>
+    </div>
+    <div>
+      <div class="shadow-tile" style="box-shadow:0 12px 30px rgba(0,0,0,.40);"><div class="sh-placeholder" style="background:#111827;"></div></div>
+      <div class="sh-name">Scale Mini-mockup</div>
+      <div class="sh-code">0 12px 30px rgba(0,0,0,.40)</div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+
+<!-- ═══════════════════════════════════════════════════════
+     07 — SPACING
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">07 — Spacing &amp; Layout</div>
+  <div class="s-title">Section Rhythm</div>
+  <div class="s-desc">Three padding values cover the entire page. Enforced via <code>!important</code> locking rules in the CSS so all section heads align visually.</div>
+
+  <div class="box" style="margin-bottom:20px;">
+    <div class="spacing-ruler">
+      <div class="sp-item"><div class="sp-bar" style="height:16px;"></div><div class="sp-val">16px</div><div class="sp-name">Hero bottom</div></div>
+      <div class="sp-item"><div class="sp-bar" style="height:24px;"></div><div class="sp-val">24px</div><div class="sp-name">Motion top</div></div>
+      <div class="sp-item"><div class="sp-bar" style="height:32px;"></div><div class="sp-val">32px</div><div class="sp-name">Motion bottom</div></div>
+      <div class="sp-item"><div class="sp-bar" style="height:40px;"></div><div class="sp-val">40px</div><div class="sp-name">Scale top</div></div>
+      <div class="sp-item"><div class="sp-bar" style="height:56px;"></div><div class="sp-val">56px</div><div class="sp-name">Logos band</div></div>
+      <div class="sp-item"><div class="sp-bar" style="height:64px;"></div><div class="sp-val">64px</div><div class="sp-name">HIW (locked)</div></div>
+      <div class="sp-item"><div class="sp-bar" style="height:80px;"></div><div class="sp-val">80px</div><div class="sp-name">Scale bottom</div></div>
+      <div class="sp-item"><div class="sp-bar" style="height:96px;"></div><div class="sp-val">96px</div><div class="sp-name">Standard (locked)</div></div>
+      <div class="sp-item"><div class="sp-bar" style="height:120px;"></div><div class="sp-val">120px</div><div class="sp-name">Hero-class (locked)</div></div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Section</th><th>Padding Top</th><th>Padding Bottom</th><th>Note</th></tr>
+    <tr><td>.hero</td><td><code>96px</code></td><td><code>16px</code></td><td>inner has 80px top + 8px bottom</td></tr>
+    <tr><td>.motion</td><td><code>24px</code></td><td><code>32px</code></td><td>flows directly from hero</td></tr>
+    <tr><td>.logos</td><td><code>56px</code></td><td><code>56px</code></td><td>hairline dividers top/bottom</td></tr>
+    <tr><td>.products</td><td><code>96px</code> (!important)</td><td><code>96px</code> (!important)</td><td>Standard lock</td></tr>
+    <tr><td>.industries</td><td><code>96px</code> (!important)</td><td><code>96px</code> (!important)</td><td>Original 120px overridden by lock</td></tr>
+    <tr><td>.tension</td><td><code>96px</code> (!important)</td><td><code>96px</code> (!important)</td><td>Standard lock</td></tr>
+    <tr><td>.stories</td><td><code>96px</code> (!important)</td><td><code>96px</code> (!important)</td><td>Standard lock</td></tr>
+    <tr><td>.metrics-wave</td><td><code>96px</code> (!important)</td><td><code>64px</code> (!important)</td><td>Tight bottom (dark cluster)</td></tr>
+    <tr><td>.how-it-works</td><td><code>64px</code> (!important)</td><td><code>64px</code> (!important)</td><td>Tight (between dark sections)</td></tr>
+    <tr><td>.scale</td><td><code>64px</code> (!important)</td><td><code>96px</code> (!important)</td><td>Tight top (continues dark cluster)</td></tr>
+    <tr><td>.final-cta</td><td><code>120px</code> (!important)</td><td><code>120px</code> (!important)</td><td>Hero-class; mirrors hero scale</td></tr>
+    <tr><td>Max content width</td><td colspan="3"><code>1200px</code> most sections · <code>880px</code> hero inner &amp; final CTA · <code>720px</code> HIW title</td></tr>
+  </table>
+
+  <div style="margin-top:20px;">
+    <table>
+      <tr><th>Breakpoint</th><th>Rule</th></tr>
+      <tr><td>≤1024px</td><td>Product cards stack to single column · Logo grid 5 cols · HIW grid 1 col · Scale pair stacks</td></tr>
+      <tr><td>≤768px</td><td>Standard sections: 64px · Dark cluster: 56px/48px · final-cta: 80px · Industries: 64px</td></tr>
+      <tr><td>≤640px</td><td>Logo grid 3 cols · Product features 1 col · Story grid 1 col</td></tr>
+    </table>
+  </div>
+</div>
+
+<hr class="div">
+
+
+<!-- ═══════════════════════════════════════════════════════
+     08 — SECTION PREVIEWS
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">08 — Section Previews</div>
+  <div class="s-title">Live Rendered Sections</div>
+
+  <!-- Hero -->
+  <div class="sg-label" style="margin-bottom:12px;">Hero Section</div>
+  <div class="hero-preview" style="margin-bottom:28px;">
+    <div class="eyebrow-pill">Trusted by 10,000+ delivery teams</div>
+    <h1 class="hero-h1">Route smarter,<br>deliver faster.</h1>
+    <p class="hero-sub">Upper Route Planner helps dispatch teams optimize multi-stop routes in minutes — cutting drive time, fuel costs, and missed deliveries.</p>
+    <div class="hero-cta-row">
+      <button class="btn btn-primary">Start free — no credit card</button>
+      <button class="btn btn-secondary">Watch 2-min demo →</button>
+    </div>
+  </div>
+
+  <!-- Dark — Metrics -->
+  <div class="sg-label" style="margin-bottom:12px;">Metrics Wave Section (dark)</div>
+  <div class="dark-section" style="margin-bottom:28px;">
+    <div class="dark-mw-head">Proven results across 10,000+ teams</div>
+    <div class="dark-h2">
+      <span class="mw-bright">Upper customers save an average of</span>
+      <span class="mw-dim"> 2.4 hours per driver per day — and never miss a window.</span>
+    </div>
+    <div class="dark-metrics">
+      <div class="dark-metric"><div class="num">40%</div><div class="cap">average fuel cost reduction after switching</div></div>
+      <div class="dark-metric"><div class="num">3×</div><div class="cap">more stops completed per driver per day</div></div>
+      <div class="dark-metric"><div class="num">98%</div><div class="cap">on-time delivery rate across all customers</div></div>
+      <div class="dark-metric"><div class="num">8min</div><div class="cap">average time to plan a full route</div></div>
+    </div>
+  </div>
+
+  <!-- Industries dark -->
+  <div class="sg-label" style="margin-bottom:12px;">Industries Grid (dark editorial)</div>
+  <div style="background:linear-gradient(180deg,#0d1530 0%,#1c1e54 50%,#0d253d 100%);border-radius:20px;padding:36px 28px;margin-bottom:28px;">
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="font-size:clamp(28px,3.8vw,40px);font-weight:500;letter-spacing:-0.022em;color:#fff;margin-bottom:10px;">Built for every industry</div>
+      <div style="font-size:16px;color:rgba(255,255,255,0.72);">From solo gig drivers to 500-vehicle enterprise fleets.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+      <div class="ind-main-demo" style="">
+        <div style="position:relative;z-index:1;font-size:14px;font-weight:700;color:#FCD34D;text-align:center;">Waste Hauling</div>
+      </div>
+      <div class="ind-main-demo" style="">
+        <div style="position:relative;z-index:1;"></div>
+        <div style="position:absolute;inset:-20%;background:radial-gradient(ellipse 85% 65% at 50% 0%,rgba(59,130,246,.52) 0%,rgba(59,130,246,.16) 40%,transparent 75%);filter:blur(40px);z-index:0;"></div>
+        <div style="position:relative;z-index:1;font-size:14px;font-weight:700;color:#93C5FD;text-align:center;">Distribution</div>
+      </div>
+      <div class="ind-tile-demo"><span>Healthcare</span></div>
+      <div class="ind-tile-demo"><span>Pharmacy</span></div>
+      <div class="ind-tile-demo"><span>HVAC</span></div>
+      <div class="ind-tile-demo"><span>Plumbing</span></div>
+      <div class="ind-tile-demo"><span>E-commerce</span></div>
+      <div class="ind-tile-demo"><span>Grocery</span></div>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,0.40);text-align:center;font-style:italic;">Dot pattern + radial mask edge fade + per-card pastel blob from top-center</div>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="sg-label" style="margin-bottom:12px;">Final CTA Section</div>
+  <div style="background:radial-gradient(ellipse 90% 50% at 50% 0%,rgba(37,99,235,.06) 0%,transparent 60%),linear-gradient(180deg,#ffffff 0%,#f5f8ff 50%,#ffffff 100%);border-radius:20px;padding:72px 40px;text-align:center;border:1px solid var(--line);">
+    <div style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--brand-700);margin-bottom:24px;">Get started today</div>
+    <div style="font-size:clamp(36px,5.6vw,64px);font-weight:500;letter-spacing:-0.025em;line-height:1.04;color:var(--ink);margin-bottom:20px;">Start routing smarter.<br>Deliver more, stress less.</div>
+    <div style="font-size:17px;color:var(--ink-2);max-width:500px;margin:0 auto 40px;line-height:1.55;">No credit card required. Set up in under 5 minutes.</div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-primary">Start free trial</button>
+      <button class="btn btn-secondary">Talk to sales →</button>
+    </div>
+    <div style="margin-top:48px;display:flex;justify-content:center;gap:36px;flex-wrap:wrap;font-size:13px;color:var(--ink-3);">
+      <span><span style="color:#16a34a;font-weight:700;">✓</span> Free 7-day trial</span>
+      <span><span style="color:#16a34a;font-weight:700;">✓</span> No credit card required</span>
+      <span><span style="color:#16a34a;font-weight:700;">✓</span> Cancel any time</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+</body>
+</html>

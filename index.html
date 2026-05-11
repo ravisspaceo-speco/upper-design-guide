@@ -1076,6 +1076,295 @@ code { font-family: var(--mono); font-size: 11.5px; background: #f1f5f9; padding
   </div>
 </div>
 
+
+
+<!-- ═══════════════════════════════════════════════════════
+     09 — FEATURE IMAGES
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">09 — Feature Images</div>
+  <div class="s-title">Blog Feature Image System</div>
+  <p style="font-size:15px;color:var(--ink-2);line-height:1.6;margin-bottom:32px;">Rules, UI elements, icons, and content guidelines for all 1095×626 blog post feature images. Every image is rendered from a single HTML file with 11 topic tabs × 3 themes × 2 formats = 66 total images.</p>
+
+  <!-- Canvas & Formats -->
+  <div class="box" style="margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px;">Canvas &amp; Formats</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:#f8faff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;">Format 1 — Text + App UI</div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.7;">Canvas: <code style="font-family:var(--mono);background:#e8f0fe;padding:1px 5px;border-radius:3px;">1095 × 626 px</code><br>Layout: <code style="font-family:var(--mono);background:#e8f0fe;padding:1px 5px;border-radius:3px;">grid-template-columns: 400px 695px</code><br>Left panel — blog brand colors (dark/light/blue)<br>Right panel — always product light theme (#F9F9FA)</div>
+      </div>
+      <div style="background:#f8faff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;">Format 2 — Full Dashboard</div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.7;">Canvas: <code style="font-family:var(--mono);background:#e8f0fe;padding:1px 5px;border-radius:3px;">1095 × 626 px</code><br>Topbar: <code style="font-family:var(--mono);background:#e8f0fe;padding:1px 5px;border-radius:3px;">46px</code> · Sidebar: <code style="font-family:var(--mono);background:#e8f0fe;padding:1px 5px;border-radius:3px;">280px</code> · Status bar: <code style="font-family:var(--mono);background:#e8f0fe;padding:1px 5px;border-radius:3px;">52px</code><br>Full dark/light/navy dashboard — product theme</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color Themes -->
+  <div class="swatch-group" style="margin-bottom:28px;">
+    <div class="sg-label">Feature Image Color Themes (3 per topic × 2 formats = 6 images)</div>
+    <div class="g3">
+      <div class="swatch" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="width:100%;height:56px;border-radius:8px;background:#04103a;position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:radial-gradient(ellipse 130% 90% at -20% 95%,rgba(37,99,235,.55) 0%,transparent 55%),radial-gradient(ellipse 70% 55% at 115% 5%,rgba(124,58,237,.30) 0%,transparent 55%);"></div></div>
+        <div><div class="sw-name">A — Dark Navy</div><div class="sw-hex">#04103a + blue/violet radial glows</div><div class="sw-use">Left panel F1 · Full bg F2: #1C1D22 (product dark)</div></div>
+      </div>
+      <div class="swatch" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="width:100%;height:56px;border-radius:8px;background:linear-gradient(135deg,#f5f8ff,#fafbff);border:1px solid var(--line);"></div>
+        <div><div class="sw-name">B — Light</div><div class="sw-hex">#f5f8ff gradient</div><div class="sw-use">Left panel F1 · Full bg F2: #ffffff</div></div>
+      </div>
+      <div class="swatch" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="width:100%;height:56px;border-radius:8px;background:#2563eb;position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at -10% 100%,rgba(255,255,255,.14) 0%,transparent 55%);"></div></div>
+        <div><div class="sw-name">C — Brand Blue</div><div class="sw-hex">#2563eb solid</div><div class="sw-use">Left panel F1 · Full bg F2: #0d1530</div></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:12px 16px;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;font-size:12.5px;color:var(--ink-2);">
+      <strong style="color:var(--ink);">Critical rule:</strong> The right app panel in Format 1 is <strong>always</strong> product light theme (<code style="font-family:var(--mono);background:#e8f0fe;padding:1px 4px;border-radius:3px;">#F9F9FA</code> background, <code style="font-family:var(--mono);background:#e8f0fe;padding:1px 4px;border-radius:3px;">#0040FF</code> primary) — never dark — regardless of the left panel color.
+    </div>
+  </div>
+
+  <!-- Product App Colors -->
+  <div class="box" style="margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px;">Product App Colors (from Upper Crew frontend tailwind.config.js)</div>
+    <div class="g4" style="gap:10px;">
+      <div class="swatch"><div class="sw-color" style="background:#0040FF;"></div><div class="sw-info"><div class="sw-name">Primary Blue</div><div class="sw-hex">#0040FF</div><div class="sw-use">Buttons, active tabs, pending badges, CTA</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#1C1D22;"></div><div class="sw-info"><div class="sw-name">Dark Background</div><div class="sw-hex">#1C1D22</div><div class="sw-use">F2 dark dashboard main bg</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#17171c;"></div><div class="sw-info"><div class="sw-name">Dark Sidebar</div><div class="sw-hex">#17171c</div><div class="sw-use">F2 dark topbar + sidebar bg</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#25252d;"></div><div class="sw-info"><div class="sw-name">Dark Cards</div><div class="sw-hex">#25252d</div><div class="sw-use">Metric cards inside dark sidebar</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#F9F9FA;border:1px solid #EEEEF1;"></div><div class="sw-info"><div class="sw-name">Light Sidebar</div><div class="sw-hex">#F9F9FA</div><div class="sw-use">F1 right panel bg · F2 light sidebar</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#EEEEF1;border:1px solid #d1d5db;"></div><div class="sw-info"><div class="sw-name">Border</div><div class="sw-hex">#EEEEF1</div><div class="sw-use">All dividers, table borders, card borders</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#6E7387;"></div><div class="sw-info"><div class="sw-name">Text Secondary</div><div class="sw-hex">#6E7387</div><div class="sw-use">Labels, metadata, muted text in app UI</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#1C1D22;"></div><div class="sw-info"><div class="sw-name">Text Primary</div><div class="sw-hex">#1C1D22</div><div class="sw-use">Names, headings in light app panels</div></div></div>
+    </div>
+  </div>
+
+  <!-- Status Colors in App UI -->
+  <div class="swatch-group" style="margin-bottom:28px;">
+    <div class="sg-label">Status Colors — App UI</div>
+    <div class="g4">
+      <div class="swatch"><div class="sw-color" style="background:#22c55e;"></div><div class="sw-info"><div class="sw-name">Done / Delivered</div><div class="sw-hex">#22c55e</div><div class="sw-use">Completed stops, POD captured, delivered</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#f97316;"></div><div class="sw-info"><div class="sw-name">En Route / Active</div><div class="sw-hex">#f97316</div><div class="sw-use">Current stop, driver in progress, near limit</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#0040FF;"></div><div class="sw-info"><div class="sw-name">Pending / Scheduled</div><div class="sw-hex">#0040FF</div><div class="sw-use">Upcoming stops, awaiting scan, scheduled</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#f43f5e;"></div><div class="sw-info"><div class="sw-name">Error / Failed</div><div class="sw-hex">#f43f5e</div><div class="sw-use">Mismatch alert, refused delivery, overloaded</div></div></div>
+    </div>
+  </div>
+
+  <!-- Industry → Feature Image Accent Mapping -->
+  <div class="swatch-group" style="margin-bottom:28px;">
+    <div class="sg-label">Industry Accent → Feature Image Eyebrow Color</div>
+    <div class="g4">
+      <div class="swatch"><div class="sw-color" style="background:#3b82f6;"></div><div class="sw-info"><div class="sw-name">Route / Crew</div><div class="sw-hex">#3b82f6</div><div class="sw-use">Route planning, fleet dispatch blogs</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#f9a8d4;"></div><div class="sw-info"><div class="sw-name">Food &amp; Catering</div><div class="sw-hex">#f9a8d4</div><div class="sw-use">Food delivery, restaurant courier blogs</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#14b8a6;"></div><div class="sw-info"><div class="sw-name">Fleet</div><div class="sw-hex">#14b8a6</div><div class="sw-use">Large fleet, multi-driver blogs</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#fcd34d;"></div><div class="sw-info"><div class="sw-name">Waste Management</div><div class="sw-hex">#fcd34d</div><div class="sw-use">Waste hauling, municipal service blogs</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#93c5fd;"></div><div class="sw-info"><div class="sw-name">Distribution</div><div class="sw-hex">#93c5fd</div><div class="sw-use">Last-mile, e-commerce delivery blogs</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#c4b5fd;"></div><div class="sw-info"><div class="sw-name">Field Service</div><div class="sw-hex">#c4b5fd</div><div class="sw-use">HVAC, plumbing, home services blogs</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#7c3aed;"></div><div class="sw-info"><div class="sw-name">AI Features</div><div class="sw-hex">#7c3aed</div><div class="sw-use">Smart routing, AI optimization blogs</div></div></div>
+      <div class="swatch"><div class="sw-color" style="background:#f97316;"></div><div class="sw-info"><div class="sw-name">Notifications</div><div class="sw-hex">#f97316</div><div class="sw-use">Customer comms, SMS/email blogs</div></div></div>
+    </div>
+  </div>
+
+  <!-- Blog Post Type → Right Panel UI -->
+  <div class="box" style="margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:20px;">Blog Post Type → Right Panel UI Rule</div>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:180px 1fr 1fr;background:#f8faff;padding:10px 16px;border-bottom:1px solid var(--line);">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);">Post Type</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);">Show in Right Panel</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);">Why</div>
+      </div>
+      <div style="display:grid;grid-template-columns:180px 1fr 1fr;padding:12px 16px;border-bottom:1px solid var(--line);align-items:start;gap:12px;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);">Guide / How-To</div>
+        <div style="font-size:12px;color:var(--ink-2);">Primary feature list/table — the main overview screen (stop list, driver table, POD records)</div>
+        <div style="font-size:12px;color:var(--ink-3);">Introduces the feature — prove the product does what the article promises</div>
+      </div>
+      <div style="display:grid;grid-template-columns:180px 1fr 1fr;padding:12px 16px;border-bottom:1px solid var(--line);align-items:start;gap:12px;background:#fafbff;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);">Tips &amp; Tricks</div>
+        <div style="font-size:12px;color:var(--ink-2);">In-action moment — one specific workflow step (3-step capture flow, signature pad, step progress)</div>
+        <div style="font-size:12px;color:var(--ink-3);">Actionable habits — show driver/dispatcher mid-task, reinforcing the specific tip</div>
+      </div>
+      <div style="display:grid;grid-template-columns:180px 1fr 1fr;padding:12px 16px;border-bottom:1px solid var(--line);align-items:start;gap:12px;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);">Stats &amp; Trends</div>
+        <div style="font-size:12px;color:var(--ink-2);">Analytics and chart UI — bar charts, trend lines, failure reason breakdowns, industry comparisons</div>
+        <div style="font-size:12px;color:var(--ink-3);">Stats articles are about data — the image should feel like a dashboard report</div>
+      </div>
+      <div style="display:grid;grid-template-columns:180px 1fr 1fr;padding:12px 16px;align-items:start;gap:12px;background:#fafbff;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);">Comparison / Best X</div>
+        <div style="font-size:12px;color:var(--ink-2);">Live operational screen for the specific niche — busy, data-rich, real-looking</div>
+        <div style="font-size:12px;color:var(--ink-3);">Comparison posts need to prove product fit — show the exact screen that niche user would see</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UI Elements Library -->
+  <div class="box" style="margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:20px;">Product UI Elements Library — Right Panel Components</div>
+    <p style="font-size:12.5px;color:var(--ink-2);margin-bottom:16px;">Every right panel must use one of these actual Upper product screens. Never invent UI that doesn't exist in the product.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Route Stop List</div><div style="font-size:10px;font-weight:600;color:#2563eb;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.18);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Multi-stop table with: stop number circle, customer name, address, ETA (JetBrains Mono), status badge (Done/En Route/Pending). Grid: <code style="font-family:var(--mono);font-size:11px;background:#e8f0fe;padding:1px 4px;border-radius:3px;">24px 1fr 58px 60px</code>. Alternating #fff/#FAFAFA rows. En Route row has #FFF9F0 highlight.</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Route Planning, Food Delivery, E-commerce blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Driver Tracking Table</div><div style="font-size:10px;font-weight:600;color:#2563eb;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.18);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Per-driver rows with: avatar circle (initials + brand color), driver name, zone/stops meta, horizontal progress bar (green=done/orange=active/blue=pending), status badge. Grid: <code style="font-family:var(--mono);font-size:11px;background:#e8f0fe;padding:1px 4px;border-radius:3px;">26px 1fr 68px</code>. Active row highlighted #F0F4FF.</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Fleet Management, GPS Tracking, Live Tracking blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">POD Records Table</div><div style="font-size:10px;font-weight:600;color:#2563eb;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.18);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Columns: stop#, customer name/address, photo thumbnails (stacked circles with camera icon, 19×19px, border-radius 50%), signature chip (green "✍ Sig"), timestamp (mono). Grid: <code style="font-family:var(--mono);font-size:11px;background:#e8f0fe;padding:1px 4px;border-radius:3px;">24px 1fr 90px 44px</code>.</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Proof of Delivery Guide, POD Overview blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Timeline / Gantt View</div><div style="font-size:10px;font-weight:600;color:#16a34a;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.20);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Horizontal lanes — one row per driver — showing full day as colored stop blocks. Time axis at top (8am·10am·12pm·2pm·4pm). Grid: <code style="font-family:var(--mono);font-size:11px;background:#e8f0fe;padding:1px 4px;border-radius:3px;">80px 1fr</code>. Blocks: green (done), orange (active, pulsing), blue/50% (pending). 2px gap between block groups.</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Scheduling, Recurring Routes, Route Planning blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Barcode Scanner</div><div style="font-size:10px;font-weight:600;color:#16a34a;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.20);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Phone frame (130×170px, #1C1D22, radius 14px) with: camera viewfinder (4 corner L-brackets in #0040FF), cyan scan line, barcode bars (white vertical strips). Below: green "✓ Match" result card + 3-stage steps (Pickup ✓ → Loading ✓ → Delivery ▶) + "Package N of N" counter.</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Barcode Scanner, Package Accuracy, Last-Mile Error blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Customer Notifications</div><div style="font-size:10px;font-weight:600;color:#16a34a;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.20);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Split panel — left: 3 SMS trigger cards (Dispatched/En Route/Delivered), each with a blue SMS bubble preview + tracking link. Right: Customer tracking page showing "12 min ETA" in large mono + 4-stage vertical progress dots (Dispatched ✓ → En Route ✓ active → Arriving → Delivered).</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Customer Notifications, WISMO, Customer Experience blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Capacity Optimization</div><div style="font-size:10px;font-weight:600;color:#16a34a;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.20);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Vehicle rows with: name/sub-text, horizontal capacity bar (gradient green≤85%/orange 86–99%/red 100%), percentage (mono, color-coded), status badge (Optimal/Near limit/Full). Below: 3 summary metric tiles (total vehicles, avg load %, trips saved).</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Capacity Optimization, Fleet Efficiency, Load Planning blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Driver Scorecard</div><div style="font-size:10px;font-weight:600;color:#16a34a;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.20);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">5-column table: Driver (avatar + name), On-Time % (green mono), Stops/Hr (blue mono), Grade (A+/A/B+…), Trend (↑ green / ↓ red / → grey). Top performer row highlighted #FFFBEB + "Top performer" orange badge. Grid: <code style="font-family:var(--mono);font-size:11px;background:#e8f0fe;padding:1px 4px;border-radius:3px;">110px 46px 50px 40px 32px</code>.</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Analytics, Driver Performance, Reporting blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">POD Capture Workflow</div><div style="font-size:10px;font-weight:600;color:#2563eb;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.18);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">3-step progress indicator (Arrive ✓ green → Photo ✓ green → Sign ▶ blue/current) with connecting lines (green=done, grey=pending). Below: dashed signature pad (54px, #FAFAFA bg, SVG ghost "sign here..." text + partial path). POD checklist (GPS locked ✓, 2 photos ✓, Signature → pending). Confirm button.</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: POD Tips &amp; Tricks, Driver Training, POD How-To blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">POD Analytics Chart</div><div style="font-size:10px;font-weight:600;color:#2563eb;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.18);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Monthly bar chart (Jan 87% → May 98%, bars proportional height, #0040FF fill with opacity variation). Failure reasons section: 3 horizontal progress bars (No answer 42% orange / Wrong address 31% red / Refused 27% amber). Industry comparison card: "Upper fleet avg: 98% · Industry avg: 72% · +26pts above".</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: POD Stats &amp; Trends, Last-Mile Data, Delivery Analytics blogs</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:16px;padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;align-items:start;">
+        <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Before / After Comparison</div><div style="font-size:10px;font-weight:600;color:#16a34a;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.20);border-radius:999px;padding:2px 8px;width:fit-content;">Active in images</div></div>
+        <div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Two-column split: "❌ Before Upper" (muted grey text) vs "✓ With Upper" (dark bold text). 5 row pairs covering planning / changes / tracking / POD / customer comms. Bottom metric cells: Before (red bg, "2 hrs", #f43f5e) | After (green bg, "10 min", #16a34a).</div>
+        <div style="font-size:11px;color:var(--ink-3);">Use for: Why Switch, ROI, Comparison, Alternative to X blogs</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SVG Icon System -->
+  <div class="box" style="margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px;">SVG Icon System — Bullet Point Icons</div>
+    <p style="font-size:12.5px;color:var(--ink-2);margin-bottom:16px;">All bullet icons use <code style="font-family:var(--mono);font-size:11px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">14×14 viewBox</code>, <code style="font-family:var(--mono);font-size:11px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">fill="none"</code>, <code style="font-family:var(--mono);font-size:11px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">stroke="currentColor"</code>, <code style="font-family:var(--mono);font-size:11px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">stroke-width="1.5"</code>, <code style="font-family:var(--mono);font-size:11px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">stroke-linecap="round"</code>, <code style="font-family:var(--mono);font-size:11px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">stroke-linejoin="round"</code>. Color inherited from parent via <code style="font-family:var(--mono);">currentColor</code>.</p>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="7" cy="7" r="5.5"/><polyline points="7,3.5 7,7 9.5,8.5"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">clock</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polyline points="1,11 4,7 7,9 10,4 13,6"/><line x1="1" y1="13" x2="13" y2="13"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">chart</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M7,1 C4.5,1 2.5,3 2.5,5.5 C2.5,8.5 7,13 7,13 C7,13 11.5,8.5 11.5,5.5 C11.5,3 9.5,1 7,1Z"/><circle cx="7" cy="5.5" r="1.8"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">location</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12.5,10.5 C12.5,11.05 12.05,11.5 11.5,11.5 L2.5,11.5 C1.95,11.5 1.5,11.05 1.5,10.5 L1.5,5 C1.5,4.45 1.95,4 2.5,4 L4.5,4 L5.5,2.5 L8.5,2.5 L9.5,4 L11.5,4 C12.05,4 12.5,4.45 12.5,5Z"/><circle cx="7" cy="7.5" r="2"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">camera</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M7,1 L12.5,3.5 L12.5,7.5 C12.5,10.5 10,12.5 7,13 C4,12.5 1.5,10.5 1.5,7.5 L1.5,3.5Z"/><polyline points="5,7 6.5,8.5 9.5,5.5"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">shield</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="3" cy="11" r="1.5"/><circle cx="11" cy="3" r="1.5"/><path d="M3,9.5 C3,6 5,5 7,5 C9,5 11,4 11,1.5"/><polyline points="9,3 11,1.5 13,3"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">route</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polyline points="9,1.5 5,7.5 8,7.5 5,12.5"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">lightning</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="2" y="3" width="10" height="10" rx="1.5"/><line x1="2" y1="6.5" x2="12" y2="6.5"/><line x1="5" y1="1.5" x2="5" y2="4.5"/><line x1="9" y1="1.5" x2="9" y2="4.5"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">calendar</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><line x1="2" y1="3" x2="2" y2="11"/><line x1="3.5" y1="3" x2="3.5" y2="11"/><line x1="5" y1="3" x2="5" y2="11"/><line x1="6" y1="3" x2="6" y2="11"/><line x1="7.5" y1="3" x2="7.5" y2="11"/><line x1="9" y1="3" x2="9" y2="11"/><line x1="10" y1="3" x2="10" y2="11"/><line x1="11.5" y1="3" x2="11.5" y2="11"/><line x1="12" y1="3" x2="12" y2="11"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">barcode</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M7,1 L13,4 L13,10 L7,13 L1,10 L1,4Z"/><polyline points="1,4 7,7 13,4"/><line x1="7" y1="7" x2="7" y2="13"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">box</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M7,1.5 C7,1.5 4,3.5 4,7 L4,9 L2,10.5 L2,11.5 L12,11.5 L12,10.5 L10,9 L10,7 C10,3.5 7,1.5 7,1.5Z"/><line x1="5.5" y1="11.5" x2="8.5" y2="13"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">bell</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="7" cy="5" r="2.8"/><path d="M1.5,13 C1.5,10 4,8 7,8 C10,8 12.5,10 12.5,13"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">user</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="1" y="5.5" width="8.5" height="6.5" rx="1"/><path d="M9.5,8 L12.5,8 L12.5,12 L9.5,12"/><circle cx="3.5" cy="12" r="1.5"/><circle cx="10.5" cy="12" r="1.5"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">truck</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="8" y="1" width="5" height="5" rx="1"/><rect x="1" y="8" width="5" height="5" rx="1"/><rect x="8" y="8" width="5" height="5" rx="1"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">grid</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polygon points="7,1.5 8.8,5.3 13,5.6 10,8.4 10.9,12.5 7,10.3 3.1,12.5 4,8.4 1,5.6 5.2,5.3"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">star</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polyline points="2,7.5 5.5,11 12,4"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">check</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:#f8faff;border:1px solid var(--line);border-radius:8px;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polyline points="1,4 1,1 4,1"/><polyline points="10,1 13,1 13,4"/><polyline points="13,10 13,13 10,13"/><polyline points="4,13 1,13 1,10"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
+        <div style="font-size:10px;font-weight:600;color:var(--ink-3);font-family:var(--mono);">scan</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Real Product Stats -->
+  <div class="box" style="margin-bottom:0;">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px;">Real Product Stats — Use These in Feature Images</div>
+    <p style="font-size:12.5px;color:var(--ink-2);margin-bottom:16px;">Always use verified numbers from upperinc.com. Never invent stats for feature images.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+      <div style="padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;"><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-bottom:6px;">900K+</div><div style="font-size:11px;font-weight:600;color:var(--ink-2);">Routes Optimized</div><div style="font-size:10px;color:var(--ink-3);margin-top:2px;">Route Planning, Optimization blogs</div></div>
+      <div style="padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;"><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-bottom:6px;">10K+</div><div style="font-size:11px;font-weight:600;color:var(--ink-2);">Drivers Capturing POD Daily</div><div style="font-size:10px;color:var(--ink-3);margin-top:2px;">POD, Proof of Delivery blogs</div></div>
+      <div style="padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;"><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-bottom:6px;">1.22M+</div><div style="font-size:11px;font-weight:600;color:var(--ink-2);">Shipments Verified</div><div style="font-size:10px;color:var(--ink-3);margin-top:2px;">Barcode Scanner blogs</div></div>
+      <div style="padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;"><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-bottom:6px;">1,000+</div><div style="font-size:11px;font-weight:600;color:var(--ink-2);">Ops Managers</div><div style="font-size:10px;color:var(--ink-3);margin-top:2px;">Driver Dispatch, Scheduling blogs</div></div>
+      <div style="padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;"><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:#16a34a;letter-spacing:-.02em;line-height:1;margin-bottom:6px;">2hrs→10min</div><div style="font-size:11px;font-weight:600;color:var(--ink-2);">Route Planning Time</div><div style="font-size:10px;color:var(--ink-3);margin-top:2px;">ROI, Why Switch, Efficiency blogs</div></div>
+      <div style="padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;"><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:#16a34a;letter-spacing:-.02em;line-height:1;margin-bottom:6px;">28%</div><div style="font-size:11px;font-weight:600;color:var(--ink-2);">More Stops Per Day</div><div style="font-size:10px;color:var(--ink-3);margin-top:2px;">Driver Performance, Analytics blogs</div></div>
+      <div style="padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;"><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:#16a34a;letter-spacing:-.02em;line-height:1;margin-bottom:6px;">48%</div><div style="font-size:11px;font-weight:600;color:var(--ink-2);">Fuel Cost Reduction</div><div style="font-size:10px;color:var(--ink-3);margin-top:2px;">Fleet Efficiency, Cost Savings blogs</div></div>
+      <div style="padding:14px 16px;background:#f8faff;border:1px solid var(--line);border-radius:8px;"><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:#16a34a;letter-spacing:-.02em;line-height:1;margin-bottom:6px;">4.8★</div><div style="font-size:11px;font-weight:600;color:var(--ink-2);">App Store Rating</div><div style="font-size:10px;color:var(--ink-3);margin-top:2px;">Comparison, Review, Best X blogs</div></div>
+    </div>
+  </div>
+
+</div>
+
 </div><!-- /wrap -->
 </body>
 </html>

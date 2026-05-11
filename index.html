@@ -1365,6 +1365,604 @@ code { font-family: var(--mono); font-size: 11.5px; background: #f1f5f9; padding
 
 </div>
 
+<!-- ═══════════════════════════════════════════════════════
+     10 — LOGO SYSTEM
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">10 — Logo System</div>
+  <div class="s-title">Logo</div>
+
+  <!-- Anatomy note -->
+  <div class="box" style="margin-bottom:28px;background:#f8faff;border:1px solid var(--line);">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Logo Anatomy</div>
+    <p style="font-size:13px;color:var(--ink-2);line-height:1.7;margin:0;">The logo has three parts: <strong style="color:var(--ink);">Icon</strong> (the U-shaped route path with navigation arrow), <strong style="color:var(--ink);">Wordmark</strong> ("upper" in rounded bubble letterforms), and <strong style="color:var(--ink);">Descriptor</strong> ("Route Planner" in dark gray). The "U" in the wordmark IS the icon — a route that starts at a red origin pin and ends at a red navigation arrow, with a dashed inner line representing the journey.</p>
+  </div>
+
+  <!-- 4 Variations -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Logo Variations</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
+
+    <!-- Variation 1: Icon only -->
+    <div style="background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div style="background:#fff;border-radius:12px;padding:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);display:inline-flex;">
+        <svg width="60" height="60" viewBox="0 0 85 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#lgf0)"><rect x="3.65" y="2" width="78" height="78" rx="10" fill="url(#lgp0)"/><rect x="3.15" y="1.5" width="79" height="79" rx="10.5" stroke="#1C72EB"/></g>
+          <g clip-path="url(#lgc0)">
+            <path d="M41.33 65.5C37.45 65.5 33.72 64.04 30.87 61.41C28.02 58.78 26.26 55.18 25.95 51.32C25.94 51.15 25.91 50.82 25.91 50.82V50.65C25.92 32.3 25.93 32.23 25.94 32.13C26.09 30.51 26.85 29.01 28.05 27.92C29.25 26.83 30.82 26.23 32.44 26.24C34.07 26.24 35.63 26.85 36.83 27.95C38.03 29.05 38.77 30.55 38.92 32.17C38.92 32.26 38.93 32.32 38.94 50.02C38.95 50.2 38.97 50.39 38.98 50.46C39.07 51.02 39.37 51.53 39.81 51.9C40.25 52.26 40.81 52.46 41.38 52.45C41.95 52.44 42.5 52.22 42.93 51.84C43.35 51.46 43.63 50.94 43.7 50.37L43.72 50.21L43.74 32.03C43.74 31.44 43.91 30.86 44.24 30.37C44.56 29.88 45.02 29.5 45.56 29.27L49.08 27.77C49.44 27.61 49.84 27.53 50.23 27.53C50.63 27.53 51.02 27.61 51.39 27.77L54.91 29.27C55.45 29.5 55.92 29.88 56.24 30.37C56.56 30.87 56.74 31.44 56.74 32.03V50.71V50.74C56.74 50.87 56.72 51 56.71 51.13C56.45 55.03 54.71 58.68 51.85 61.35C48.99 64.01 45.23 65.5 41.33 65.5Z" fill="#1C72EB"/>
+            <path d="M46.15 31.68C45.88 31.8 45.65 31.99 45.49 32.23C45.33 32.48 45.25 32.76 45.25 33.06L45.23 50.31L45.2 50.56C45.08 51.49 44.63 52.35 43.93 52.97C43.23 53.6 42.33 53.95 41.39 53.96C40.45 53.98 39.54 53.66 38.82 53.05C38.1 52.45 37.62 51.61 37.48 50.68C37.46 50.56 37.42 50.07 37.42 50.07C37.42 50.07 37.41 32.39 37.4 32.31C37.29 31.06 36.72 29.91 35.8 29.07C34.88 28.22 33.68 27.75 32.43 27.75C31.18 27.75 29.98 28.21 29.06 29.05C28.13 29.88 27.55 31.04 27.43 32.28C27.43 32.37 27.41 50.68 27.41 50.68C27.41 50.68 27.44 51.03 27.45 51.2C27.74 54.69 29.34 57.95 31.92 60.33C34.51 62.7 37.9 64 41.41 63.98C44.92 63.96 48.29 62.61 50.85 60.21C53.41 57.81 54.96 54.53 55.21 51.03C55.21 50.91 55.22 50.79 55.23 50.68V33.06C55.23 32.77 55.14 32.48 54.98 32.24C54.82 31.99 54.59 31.8 54.32 31.69L50.8 30.18C50.62 30.11 50.43 30.07 50.24 30.07C50.04 30.07 49.85 30.11 49.67 30.18L46.15 31.68Z" fill="white"/>
+            <path d="M42.65 32.66C42.32 32.66 41.99 32.57 41.7 32.41C41.41 32.25 41.17 32.02 40.99 31.74C40.81 31.46 40.71 31.14 40.69 30.81C40.67 30.48 40.73 30.15 40.87 29.85L40.9 29.78L48.29 17.44C48.46 17.12 48.71 16.86 49.02 16.67C49.33 16.49 49.68 16.39 50.04 16.39C50.39 16.39 50.75 16.49 51.05 16.67C51.36 16.86 51.61 17.12 51.78 17.44L59.17 29.78L59.2 29.85C59.34 30.15 59.41 30.48 59.39 30.81C59.37 31.14 59.26 31.46 59.08 31.74C58.9 32.02 58.66 32.25 58.37 32.41C58.08 32.57 57.75 32.66 57.42 32.66C57.12 32.66 56.83 32.59 56.56 32.46L50.04 29.55L43.51 32.46C43.24 32.59 42.95 32.66 42.65 32.66Z" fill="#1C72EB"/>
+            <path d="M49.82 27.99L42.86 31.09C42.78 31.14 42.68 31.16 42.58 31.14C42.49 31.13 42.4 31.08 42.33 31.02C42.26 30.95 42.21 30.86 42.2 30.77C42.18 30.67 42.19 30.57 42.23 30.48L49.61 18.18C49.65 18.1 49.71 18.03 49.78 17.98C49.86 17.93 49.94 17.91 50.03 17.91C50.12 17.91 50.21 17.93 50.28 17.98C50.36 18.03 50.42 18.1 50.45 18.18L57.83 30.48C57.87 30.57 57.89 30.67 57.87 30.77C57.85 30.86 57.81 30.95 57.74 31.02C57.67 31.08 57.58 31.13 57.48 31.14C57.38 31.16 57.29 31.14 57.2 31.09L50.24 27.99C50.18 27.96 50.11 27.94 50.03 27.94C49.96 27.94 49.89 27.96 49.82 27.99Z" fill="white"/>
+            <path d="M50.94 27.04C50.66 26.9 50.35 26.83 50.03 26.83C49.72 26.83 49.41 26.9 49.13 27.04L44.71 29.01C44.7 29.02 44.68 29.02 44.66 29.02C44.65 29.02 44.63 29.01 44.62 28.99C44.61 28.98 44.6 28.97 44.6 28.95C44.6 28.93 44.6 28.92 44.61 28.9L49.96 19.97C49.97 19.95 49.98 19.94 50 19.94C50.02 19.93 50.03 19.93 50.05 19.94C50.07 19.94 50.08 19.95 50.09 19.97L55.45 28.9C55.46 28.92 55.47 28.93 55.46 28.95C55.46 28.97 55.45 28.98 55.44 28.99C55.43 29.01 55.42 29.02 55.4 29.02C55.38 29.02 55.37 29.02 55.35 29.01L50.94 27.04Z" fill="#ED1C24"/>
+            <path d="M32.44 37.17C34.69 37.17 36.52 35.35 36.52 33.1C36.52 30.85 34.69 29.02 32.44 29.02C30.19 29.02 28.37 30.85 28.37 33.1C28.37 35.35 30.19 37.17 32.44 37.17Z" fill="#1C72EB"/>
+            <path d="M32.45 36.38C34.26 36.38 35.73 34.91 35.73 33.1C35.73 31.29 34.26 29.82 32.45 29.82C30.63 29.82 29.17 31.29 29.17 33.1C29.17 34.91 30.63 36.38 32.45 36.38Z" fill="white"/>
+            <path d="M32.44 35.43C33.73 35.43 34.78 34.38 34.78 33.1C34.78 31.81 33.73 30.76 32.44 30.76C31.16 30.76 30.11 31.81 30.11 33.1C30.11 34.38 31.16 35.43 32.44 35.43Z" fill="#ED1C24"/>
+          </g>
+          <defs>
+            <filter id="lgf0" x="0.65" y="0" width="84" height="84" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="1"/><feGaussianBlur stdDeviation="1"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_lg"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_lg" result="shape"/></filter>
+            <linearGradient id="lgp0" x1="42.65" y1="2" x2="42.65" y2="80" gradientUnits="userSpaceOnUse"><stop stop-color="#F8F8F8"/><stop offset="0.51" stop-color="#FCFDFF"/><stop offset="1" stop-color="#FBFCFE"/></linearGradient>
+            <clipPath id="lgc0"><rect width="49.22" height="49.22" fill="white" transform="translate(18.04 16.39)"/></clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">App Icon</div>
+        <div style="font-size:11px;color:var(--ink-3);">Favicon · App stores · Avatars<br>Min size: 16px · Preferred: 60px+</div>
+      </div>
+    </div>
+
+    <!-- Variation 2: Horizontal full lockup -->
+    <div style="background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div style="background:#fff;border-radius:10px;padding:20px 28px;box-shadow:0 1px 4px rgba(0,0,0,.08);display:inline-flex;align-items:center;gap:10px;">
+        <!-- Simplified icon inline -->
+        <svg width="40" height="40" viewBox="20 18 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M41.33 65.5C37.45 65.5 33.72 64.04 30.87 61.41C28.02 58.78 26.26 55.18 25.95 51.32L25.91 50.65C25.92 32.3 25.94 32.13 26.09 30.51C26.85 28.89 28.05 27.92 29.25 26.83C30.82 26.23 32.44 26.24 34.07 26.24C35.63 26.85 36.83 27.95 38.03 29.05C38.77 30.55 38.92 32.17 38.92 32.17C38.92 32.17 38.94 50.02 38.98 50.46C39.07 51.02 39.37 51.53 39.81 51.9C40.25 52.26 40.81 52.46 41.38 52.45C41.95 52.44 42.5 52.22 42.93 51.84C43.35 51.46 43.63 50.94 43.7 50.37L43.74 32.03C43.74 31.44 44.24 30.37 44.56 29.88C45.02 29.5 45.56 29.27 49.08 27.77C49.44 27.61 50.23 27.53 50.63 27.53C51.02 27.61 51.39 27.77 54.91 29.27C55.45 29.5 55.92 29.88 56.24 30.37C56.74 31.44 56.74 32.03 56.74 50.71C56.72 51 56.71 51.13 56.45 55.03C54.71 58.68 51.85 61.35 48.99 64.01C45.23 65.5 41.33 65.5 41.33 65.5Z" fill="#1C72EB"/>
+          <path d="M46.15 31.68C45.88 31.8 45.25 33.06 45.25 33.06L45.2 50.56C45.08 51.49 44.63 52.35 43.93 52.97C43.23 53.6 42.33 53.95 41.39 53.96C40.45 53.98 39.54 53.66 38.82 53.05C38.1 52.45 37.48 50.68 37.48 50.68L37.4 32.31C37.29 31.06 36.72 29.91 35.8 29.07C34.88 28.22 33.68 27.75 32.43 27.75C31.18 27.75 29.98 28.21 29.06 29.05C28.13 29.88 27.43 50.68 27.43 50.68C27.74 54.69 29.34 57.95 31.92 60.33C34.51 62.7 37.9 64 41.41 63.98C44.92 63.96 48.29 62.61 50.85 60.21C53.41 57.81 55.21 51.03 55.23 50.68V33.06C55.14 32.48 54.98 32.24 54.82 31.99C54.59 31.8 54.32 31.69 50.8 30.18C50.43 30.07 50.04 30.07 49.67 30.18L46.15 31.68Z" fill="white"/>
+          <path d="M42.65 32.66L50.04 29.55L43.51 32.46C43.24 32.59 42.95 32.66 42.65 32.66C42.32 32.66 41.99 32.57 41.7 32.41C41.41 32.25 40.99 31.74 40.87 29.85L48.29 17.44C48.71 16.86 49.68 16.39 50.04 16.39C50.75 16.49 51.78 17.44 51.78 17.44L59.17 29.78L56.56 32.46L50.04 29.55Z" fill="#1C72EB"/>
+          <path d="M49.82 27.99L42.86 31.09L50.45 18.18L57.83 30.48L50.24 27.99C50.11 27.96 49.96 27.94 49.82 27.99Z" fill="white"/>
+          <path d="M50.94 27.04L49.13 27.04L44.61 28.9L49.96 19.97L55.45 28.9L50.94 27.04Z" fill="#ED1C24"/>
+          <circle cx="32.44" cy="33.1" r="4.15" fill="#1C72EB"/>
+          <circle cx="32.44" cy="33.1" r="3.31" fill="white"/>
+          <circle cx="32.44" cy="33.1" r="2.34" fill="#ED1C24"/>
+        </svg>
+        <div style="display:flex;flex-direction:column;line-height:1;">
+          <span style="font-size:28px;font-weight:900;color:#1C72EB;letter-spacing:-.02em;font-family:'Inter',sans-serif;">upper</span>
+          <span style="font-size:11px;font-weight:500;color:#1a1a1a;letter-spacing:.02em;margin-top:2px;">Route Planner</span>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Horizontal Lockup</div>
+        <div style="font-size:11px;color:var(--ink-3);">Default logo · Marketing · Website<br>Min width: 140px</div>
+      </div>
+    </div>
+
+    <!-- Variation 3: Wordmark only -->
+    <div style="background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div style="background:#fff;border-radius:10px;padding:20px 28px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
+        <span style="font-size:32px;font-weight:900;color:#1C72EB;letter-spacing:-.02em;font-family:'Inter',sans-serif;">upper</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Wordmark Only</div>
+        <div style="font-size:11px;color:var(--ink-3);">Compact contexts · Social profiles<br>Min width: 80px</div>
+      </div>
+    </div>
+
+    <!-- Variation 4: Reversed (white on blue) -->
+    <div style="background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div style="background:#1C72EB;border-radius:10px;padding:20px 28px;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;align-items:center;gap:10px;">
+        <span style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-.02em;font-family:'Inter',sans-serif;">upper</span>
+        <span style="font-size:11px;font-weight:500;color:rgba(255,255,255,.75);letter-spacing:.02em;">Route Planner</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Reversed (White)</div>
+        <div style="font-size:11px;color:var(--ink-3);">Dark/color backgrounds · Print<br>Use when bg contrast is insufficient</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo Colors -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Logo Colors</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px;">
+    <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
+      <div style="height:64px;background:#1C72EB;"></div>
+      <div style="padding:10px 12px;background:#fff;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);">Logo Blue</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px;">#1C72EB</div>
+      </div>
+    </div>
+    <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
+      <div style="height:64px;background:#ED1C24;"></div>
+      <div style="padding:10px 12px;background:#fff;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);">Navigation Red</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px;">#ED1C24</div>
+      </div>
+    </div>
+    <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
+      <div style="height:64px;background:#FFFFFF;border-bottom:1px solid var(--line);"></div>
+      <div style="padding:10px 12px;background:#fff;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);">White Fill</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px;">#FFFFFF</div>
+      </div>
+    </div>
+    <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
+      <div style="height:64px;background:#1A1A1A;"></div>
+      <div style="padding:10px 12px;background:#fff;">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);">Descriptor</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px;">#1A1A1A</div>
+      </div>
+    </div>
+  </div>
+  <div class="box" style="margin-bottom:28px;background:#fffbeb;border-color:#fde68a;">
+    <span style="font-size:12px;font-weight:600;color:#92400e;">⚠ Important distinction:</span>
+    <span style="font-size:12px;color:#78350f;margin-left:6px;">Logo blue <code style="font-family:var(--mono);background:#fef3c7;padding:1px 4px;border-radius:3px;">#1C72EB</code> and website primary <code style="font-family:var(--mono);background:#fef3c7;padding:1px 4px;border-radius:3px;">#2563EB</code> are different. Use <strong>#1C72EB</strong> only in logo contexts. Use <strong>#2563EB</strong> for UI elements, CTAs, and web content.</span>
+  </div>
+
+  <!-- Clear Space & Min Size -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+    <div class="box">
+      <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">Clear Space</div>
+      <div style="position:relative;display:inline-block;padding:24px;border:2px dashed #bfdbfe;border-radius:4px;margin-bottom:10px;">
+        <span style="font-size:20px;font-weight:900;color:#1C72EB;letter-spacing:-.02em;font-family:'Inter',sans-serif;">upper</span>
+        <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);font-size:9px;color:#3b82f6;white-space:nowrap;">× (x = cap-height of "u")</div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-2);margin:0;line-height:1.6;">Maintain a minimum clear zone equal to the cap-height of the "u" letterform on all four sides. No other logos, text, or graphic elements enter this zone.</p>
+    </div>
+    <div class="box">
+      <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">Minimum Sizes</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:24px;height:24px;background:#1C72EB;border-radius:4px;flex-shrink:0;"></div>
+          <div style="font-size:12px;color:var(--ink-2);">App icon: <strong>24 × 24 px</strong> minimum</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:80px;height:16px;background:#1C72EB;border-radius:3px;flex-shrink:0;"></div>
+          <div style="font-size:12px;color:var(--ink-2);">Wordmark: <strong>80 px</strong> wide min</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:140px;height:16px;background:#1C72EB;border-radius:3px;flex-shrink:0;"></div>
+          <div style="font-size:12px;color:var(--ink-2);">Full lockup: <strong>140 px</strong> wide min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Don'ts -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Don'ts</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+    <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:16px;">
+      <div style="font-size:10px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">❌ Don't recolor</div>
+      <span style="font-size:22px;font-weight:900;color:#7c3aed;letter-spacing:-.02em;font-family:'Inter',sans-serif;">upper</span>
+      <p style="font-size:11px;color:#991b1b;margin:8px 0 0;">Never change the logo to any color other than the approved palette.</p>
+    </div>
+    <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:16px;">
+      <div style="font-size:10px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">❌ Don't stretch</div>
+      <span style="font-size:22px;font-weight:900;color:#1C72EB;letter-spacing:-.02em;font-family:'Inter',sans-serif;display:inline-block;transform:scaleX(1.4);">upper</span>
+      <p style="font-size:11px;color:#991b1b;margin:8px 0 0;">Never distort, squeeze, or stretch any logo variation.</p>
+    </div>
+    <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:16px;">
+      <div style="font-size:10px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">❌ Don't add effects</div>
+      <span style="font-size:22px;font-weight:900;color:#1C72EB;letter-spacing:-.02em;font-family:'Inter',sans-serif;text-shadow:3px 3px 6px rgba(0,0,0,.5);">upper</span>
+      <p style="font-size:11px;color:#991b1b;margin:8px 0 0;">No drop shadows, gradients, glows, or outlines on logo art.</p>
+    </div>
+    <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:16px;">
+      <div style="font-size:10px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">❌ Don't rotate</div>
+      <span style="font-size:22px;font-weight:900;color:#1C72EB;letter-spacing:-.02em;font-family:'Inter',sans-serif;display:inline-block;transform:rotate(-15deg);">upper</span>
+      <p style="font-size:11px;color:#991b1b;margin:8px 0 0;">Always display the logo horizontally — never at an angle.</p>
+    </div>
+    <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:16px;">
+      <div style="font-size:10px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">❌ Don't use on low contrast bg</div>
+      <div style="background:#3b82f6;border-radius:6px;padding:8px 12px;display:inline-block;">
+        <span style="font-size:18px;font-weight:900;color:#1C72EB;letter-spacing:-.02em;font-family:'Inter',sans-serif;">upper</span>
+      </div>
+      <p style="font-size:11px;color:#991b1b;margin:8px 0 0;">Use the white/reversed version on colored or dark backgrounds.</p>
+    </div>
+    <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:16px;">
+      <div style="font-size:10px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">❌ Don't retype</div>
+      <span style="font-size:22px;font-weight:900;color:#1C72EB;letter-spacing:-.02em;font-family:'Georgia',serif;">upper</span>
+      <p style="font-size:11px;color:#991b1b;margin:8px 0 0;">Never recreate the wordmark in a different typeface. Use the approved SVG files.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     11 — BRAND IDENTITY
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">11 — Brand Identity</div>
+  <div class="s-title">Who We Are</div>
+
+  <!-- Tagline -->
+  <div style="background:linear-gradient(135deg,#eff6ff,#f0f9ff);border:1px solid #bfdbfe;border-radius:14px;padding:28px;margin-bottom:24px;text-align:center;">
+    <div style="font-size:10px;font-weight:700;color:#3b82f6;text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Core Tagline</div>
+    <div style="font-size:26px;font-weight:700;color:#0040FF;letter-spacing:-.025em;line-height:1.2;">"Route Planning That Handles the Chaos"</div>
+  </div>
+
+  <!-- Mission + Positioning -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+    <div class="box">
+      <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Mission</div>
+      <p style="font-size:13px;color:var(--ink-2);line-height:1.7;margin:0;">Give any delivery operation — from solo drivers to fleets of 200 — the tools that logistics pros use, without the enterprise complexity or price tag.</p>
+    </div>
+    <div class="box">
+      <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Positioning</div>
+      <p style="font-size:13px;color:var(--ink-2);line-height:1.7;margin:0;">Upper is the route planning software for businesses that live in the real world — where drivers call out, addresses change, and a plan made at 7 AM rarely survives to noon.</p>
+    </div>
+  </div>
+
+  <!-- Brand Pillars -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Brand Pillars</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;">
+    <div style="background:#eff6ff;border-radius:10px;padding:18px;border-top:3px solid #3b82f6;">
+      <div style="font-size:18px;margin-bottom:8px;">⚡</div>
+      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Simplicity</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Powerful enough for pros. Simple enough that any driver can start in minutes — no training manual needed.</div>
+    </div>
+    <div style="background:#f0fdf4;border-radius:10px;padding:18px;border-top:3px solid #22c55e;">
+      <div style="font-size:18px;margin-bottom:8px;">🔄</div>
+      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Adaptability</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">When real-world chaos hits, Upper adapts. Drag, drop, re-optimize — routes flex as fast as reality changes.</div>
+    </div>
+    <div style="background:#faf5ff;border-radius:10px;padding:18px;border-top:3px solid #7c3aed;">
+      <div style="font-size:18px;margin-bottom:8px;">🛡</div>
+      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Reliability</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Built for operations that can't afford downtime. 900K+ routes completed. 4.8★ rating across platforms.</div>
+    </div>
+    <div style="background:#fff7ed;border-radius:10px;padding:18px;border-top:3px solid #f97316;">
+      <div style="font-size:18px;margin-bottom:8px;">🔍</div>
+      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Transparency</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Live tracking for dispatchers and real-time ETAs for customers. Everyone knows where the route stands.</div>
+    </div>
+  </div>
+
+  <!-- Target Audience -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Primary Audience</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+    <div class="box" style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;background:#eff6ff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">👤</div>
+      <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Operations Manager</div><div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Manages 5–200 drivers. Needs dispatch done fast with full visibility into fleet performance.</div></div>
+    </div>
+    <div class="box" style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;background:#f0fdf4;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🚐</div>
+      <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Small Business Owner</div><div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Runs delivery operations themselves. Needs to plan routes in minutes, not hours — often on mobile.</div></div>
+    </div>
+    <div class="box" style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;background:#faf5ff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">📦</div>
+      <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Field Service Dispatcher</div><div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Coordinates HVAC, plumbing, or service technicians across multiple zones with time-window constraints.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     12 — VOICE & TONE
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">12 — Voice &amp; Tone</div>
+  <div class="s-title">How We Write</div>
+
+  <!-- Personality traits -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Brand Personality</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;">
+    <div style="background:#f8faff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;">
+      <div style="font-size:22px;margin-bottom:8px;">🎯</div>
+      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Direct</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Say what you mean. No filler words, no jargon, no seven-word sentences where three will do.</div>
+    </div>
+    <div style="background:#f8faff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;">
+      <div style="font-size:22px;margin-bottom:8px;">🤝</div>
+      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Empathetic</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">We know your days aren't perfect. We write to logistics people who've lived the chaos, not at them.</div>
+    </div>
+    <div style="background:#f8faff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;">
+      <div style="font-size:22px;margin-bottom:8px;">🔧</div>
+      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Practical</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Every sentence earns its place. Specific numbers beat vague claims. Steps beat descriptions.</div>
+    </div>
+    <div style="background:#f8faff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;">
+      <div style="font-size:22px;margin-bottom:8px;">💪</div>
+      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Confident</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">We earned 4.8★ from real operators. We don't hedge when we know something works.</div>
+    </div>
+  </div>
+
+  <!-- Writing principles -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Writing Principles</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+    <!-- Do column -->
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:20px;">
+      <div style="font-size:11px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;">✓ Do Write Like This</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid #22c55e;">
+          <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;">"Route Planning That Handles the Chaos"</div>
+          <div style="font-size:11px;color:var(--ink-3);">Problem-first — acknowledge the reality before the solution</div>
+        </div>
+        <div style="background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid #22c55e;">
+          <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;">"Drag, drop, done."</div>
+          <div style="font-size:11px;color:var(--ink-3);">Short declarative sentences — action verbs, concrete outcomes</div>
+        </div>
+        <div style="background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid #22c55e;">
+          <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;">"Your days aren't perfect. Neither are ours. That's why we built this."</div>
+          <div style="font-size:11px;color:var(--ink-3);">Peer-to-peer — speak with operators, not at them</div>
+        </div>
+        <div style="background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid #22c55e;">
+          <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;">"2 hours → 10 minutes. One click."</div>
+          <div style="font-size:11px;color:var(--ink-3);">Specific numbers — always quantify the benefit</div>
+        </div>
+      </div>
+    </div>
+    <!-- Don't column -->
+    <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:12px;padding:20px;">
+      <div style="font-size:11px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;">✗ Don't Write Like This</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid #f43f5e;">
+          <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;">"Our revolutionary AI-powered platform leverages cutting-edge algorithms..."</div>
+          <div style="font-size:11px;color:var(--ink-3);">Tech buzzwords — say what it does, not how it's built</div>
+        </div>
+        <div style="background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid #f43f5e;">
+          <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;">"Simply utilize the interface to seamlessly optimize your routes."</div>
+          <div style="font-size:11px;color:var(--ink-3);">Filler words — "simply", "seamlessly", "utilize" add nothing</div>
+        </div>
+        <div style="background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid #f43f5e;">
+          <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;">"Empowering logistics professionals to unlock unprecedented efficiency."</div>
+          <div style="font-size:11px;color:var(--ink-3);">Corporate-speak — no one talks like this in a dispatch office</div>
+        </div>
+        <div style="background:#fff;border-radius:8px;padding:12px 14px;border-left:3px solid #f43f5e;">
+          <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;">"It may help improve certain aspects of route efficiency over time."</div>
+          <div style="font-size:11px;color:var(--ink-3);">Hedging — if we know it works, say so confidently</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copy rules quick-ref -->
+  <div class="box">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;">Quick Rules</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="font-size:12px;color:var(--ink-2);line-height:1.7;"><strong style="color:var(--ink);">Headlines:</strong> Sentence case always. Never ALL CAPS in prose. Bold the value, not the product name.</div>
+      <div style="font-size:12px;color:var(--ink-2);line-height:1.7;"><strong style="color:var(--ink);">Numbers:</strong> Always use digits (5 drivers, not five). Include units (28%, 48 mins, $40/mo).</div>
+      <div style="font-size:12px;color:var(--ink-2);line-height:1.7;"><strong style="color:var(--ink);">CTAs:</strong> Action + outcome. "Start free trial" not "Get started". "Plan routes in 10 min" not "Learn more".</div>
+      <div style="font-size:12px;color:var(--ink-2);line-height:1.7;"><strong style="color:var(--ink);">Product name:</strong> "Upper" (capitalized, never "UPPER"). "Upper Route Planner" on first mention, "Upper" after.</div>
+      <div style="font-size:12px;color:var(--ink-2);line-height:1.7;"><strong style="color:var(--ink);">Sentence length:</strong> Aim for ≤20 words. Short sentences land harder in logistics contexts.</div>
+      <div style="font-size:12px;color:var(--ink-2);line-height:1.7;"><strong style="color:var(--ink);">Audience address:</strong> "You" and "your team" — always second person. Never "the user" or "customers".</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     13 — MOTION & ANIMATION
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">13 — Motion &amp; Animation</div>
+  <div class="s-title">Motion System</div>
+
+  <!-- Principles -->
+  <div class="box" style="margin-bottom:28px;background:#f8faff;">
+    <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Principles</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Purposeful</div><div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Every animation communicates something — state change, feedback, or spatial relationship. No decoration-only motion.</div></div>
+      <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Subtle</div><div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Operators are focused on their work. Motion should confirm actions quickly and get out of the way.</div></div>
+      <div><div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Consistent</div><div style="font-size:12px;color:var(--ink-2);line-height:1.6;">Same elements always animate the same way. Predictable motion builds trust with repeat users.</div></div>
+    </div>
+  </div>
+
+  <!-- Duration tokens -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Duration Tokens</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;">
+    <div class="box" style="text-align:center;">
+      <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--brand);letter-spacing:-.02em;line-height:1;">100ms</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:8px 0 4px;">--dur-fast</div>
+      <div style="font-size:11px;color:var(--ink-3);line-height:1.6;">Micro-interactions: button press feedback, checkbox toggle, badge count update</div>
+    </div>
+    <div class="box" style="text-align:center;">
+      <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--brand);letter-spacing:-.02em;line-height:1;">200ms</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:8px 0 4px;">--dur-base</div>
+      <div style="font-size:11px;color:var(--ink-3);line-height:1.6;">Default: hover states, color transitions, tooltips appear/disappear, focus rings</div>
+    </div>
+    <div class="box" style="text-align:center;">
+      <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--brand);letter-spacing:-.02em;line-height:1;">300ms</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:8px 0 4px;">--dur-slow</div>
+      <div style="font-size:11px;color:var(--ink-3);line-height:1.6;">Modals open/close, dropdowns expand, accordions, slide-in panels</div>
+    </div>
+    <div class="box" style="text-align:center;">
+      <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--brand);letter-spacing:-.02em;line-height:1;">500ms</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:8px 0 4px;">--dur-enter</div>
+      <div style="font-size:11px;color:var(--ink-3);line-height:1.6;">Page transitions, hero entrances, large content section reveals on scroll</div>
+    </div>
+  </div>
+
+  <!-- Easing reference -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Easing Curves</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;">
+    <div class="box">
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;">Ease Out — Entrances</div>
+      <div style="font-family:var(--mono);font-size:11px;color:#7c3aed;background:#faf5ff;padding:6px 10px;border-radius:5px;margin-bottom:8px;">cubic-bezier(0, 0, 0.2, 1)</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Elements entering the screen. Starts fast, decelerates to rest — feels natural and responsive.</div>
+    </div>
+    <div class="box">
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;">Ease In — Exits</div>
+      <div style="font-family:var(--mono);font-size:11px;color:#7c3aed;background:#faf5ff;padding:6px 10px;border-radius:5px;margin-bottom:8px;">cubic-bezier(0.4, 0, 1, 1)</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Elements leaving the screen. Starts slow, accelerates out — doesn't linger, exits cleanly.</div>
+    </div>
+    <div class="box">
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;">Ease In-Out — Interactive</div>
+      <div style="font-family:var(--mono);font-size:11px;color:#7c3aed;background:#faf5ff;padding:6px 10px;border-radius:5px;margin-bottom:8px;">cubic-bezier(0.4, 0, 0.2, 1)</div>
+      <div style="font-size:11px;color:var(--ink-2);line-height:1.6;">Hover transitions, toggle states, expanding panels. Smooth in both directions.</div>
+    </div>
+  </div>
+
+  <!-- Element-specific rules -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Element-Specific Rules</div>
+  <div class="box">
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--line);">
+          <th style="text-align:left;padding:8px 12px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px;">Element</th>
+          <th style="text-align:left;padding:8px 12px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px;">Duration</th>
+          <th style="text-align:left;padding:8px 12px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px;">Easing</th>
+          <th style="text-align:left;padding:8px 12px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px;">Properties</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 12px;font-weight:600;color:var(--ink);">Button hover</td>
+          <td style="padding:10px 12px;font-family:var(--mono);color:var(--brand);">200ms</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">ease-in-out</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">background-color, box-shadow, transform(scale 0.98 on click)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 12px;font-weight:600;color:var(--ink);">Nav link hover</td>
+          <td style="padding:10px 12px;font-family:var(--mono);color:var(--brand);">200ms</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">ease-out</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">color, opacity, border-bottom underline</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 12px;font-weight:600;color:var(--ink);">Dropdown / Mega-menu</td>
+          <td style="padding:10px 12px;font-family:var(--mono);color:var(--brand);">300ms</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">ease-out</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">opacity 0→1, transform translateY(-8px)→0</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 12px;font-weight:600;color:var(--ink);">Modal open</td>
+          <td style="padding:10px 12px;font-family:var(--mono);color:var(--brand);">300ms</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">ease-out</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">opacity 0→1, scale 0.95→1, backdrop-filter blur</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 12px;font-weight:600;color:var(--ink);">Card hover</td>
+          <td style="padding:10px 12px;font-family:var(--mono);color:var(--brand);">200ms</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">ease-in-out</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">box-shadow elevation increase, transform translateY(-2px)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 12px;font-weight:600;color:var(--ink);">Page section reveal</td>
+          <td style="padding:10px 12px;font-family:var(--mono);color:var(--brand);">500ms</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">ease-out</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">opacity 0→1, transform translateY(24px)→0 on scroll enter</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 12px;font-weight:600;color:var(--ink);">Toast / notification</td>
+          <td style="padding:10px 12px;font-family:var(--mono);color:var(--brand);">300ms in / 200ms out</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">ease-out / ease-in</td>
+          <td style="padding:10px 12px;color:var(--ink-2);">opacity + translateX(100%)→0 slide from right</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     14 — GRID & BREAKPOINTS
+     ═══════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="s-label">14 — Grid &amp; Breakpoints</div>
+  <div class="s-title">Layout System</div>
+
+  <!-- Breakpoints -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Breakpoints</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;">
+    <div class="box" style="text-align:center;border-top:3px solid #94a3b8;">
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;">375px</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:8px 0 4px;">Mobile</div>
+      <div style="font-size:11px;color:var(--ink-3);line-height:1.6;">Single column · 16px gutters · Driver app primary target</div>
+    </div>
+    <div class="box" style="text-align:center;border-top:3px solid #3b82f6;">
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;">768px</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:8px 0 4px;">Tablet</div>
+      <div style="font-size:11px;color:var(--ink-3);line-height:1.6;">2-column · 24px gutters · Dispatcher on iPad</div>
+    </div>
+    <div class="box" style="text-align:center;border-top:3px solid #2563eb;">
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;">1024px</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:8px 0 4px;">Desktop</div>
+      <div style="font-size:11px;color:var(--ink-3);line-height:1.6;">12-column · 24px gutters · Primary web viewport</div>
+    </div>
+    <div class="box" style="text-align:center;border-top:3px solid #1d4ed8;">
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;">1280px</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:8px 0 4px;">Wide</div>
+      <div style="font-size:11px;color:var(--ink-3);line-height:1.6;">12-column · 32px gutters · Max content container</div>
+    </div>
+  </div>
+
+  <!-- Container specs -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Container Widths</div>
+  <div class="box" style="margin-bottom:24px;">
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <!-- Max wrapper -->
+      <div style="position:relative;">
+        <div style="background:#dbeafe;border-radius:6px;height:36px;display:flex;align-items:center;padding:0 14px;">
+          <span style="font-size:12px;font-weight:600;color:#1e40af;">Max page wrapper — 1280px · centered · auto margins</span>
+        </div>
+      </div>
+      <!-- Content container -->
+      <div style="position:relative;padding:0 32px;">
+        <div style="background:#bfdbfe;border-radius:6px;height:36px;display:flex;align-items:center;padding:0 14px;">
+          <span style="font-size:12px;font-weight:600;color:#1e3a8a;">Content container — 1200px · 40px side padding on desktop</span>
+        </div>
+      </div>
+      <!-- Blog reading column -->
+      <div style="position:relative;padding:0 160px;">
+        <div style="background:#93c5fd;border-radius:6px;height:36px;display:flex;align-items:center;padding:0 14px;">
+          <span style="font-size:12px;font-weight:600;color:#1e3a8a;">Blog reading column — 780px · centered in content area</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Column grid visual -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">12-Column Grid</div>
+  <div class="box" style="margin-bottom:24px;">
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-bottom:12px;">
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+      <div style="background:#dbeafe;border-radius:3px;height:24px;grid-column:span 1;"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-bottom:12px;">
+      <div style="background:#93c5fd;border-radius:4px;height:32px;grid-column:span 6;display:flex;align-items:center;padding:0 10px;"><span style="font-size:11px;font-weight:600;color:#1e40af;">6-col half</span></div>
+      <div style="background:#93c5fd;border-radius:4px;height:32px;grid-column:span 6;display:flex;align-items:center;padding:0 10px;"><span style="font-size:11px;font-weight:600;color:#1e40af;">6-col half</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-bottom:12px;">
+      <div style="background:#60a5fa;border-radius:4px;height:32px;grid-column:span 4;display:flex;align-items:center;padding:0 10px;"><span style="font-size:11px;font-weight:600;color:#fff;">4-col third</span></div>
+      <div style="background:#60a5fa;border-radius:4px;height:32px;grid-column:span 4;display:flex;align-items:center;padding:0 10px;"><span style="font-size:11px;font-weight:600;color:#fff;">4-col third</span></div>
+      <div style="background:#60a5fa;border-radius:4px;height:32px;grid-column:span 4;display:flex;align-items:center;padding:0 10px;"><span style="font-size:11px;font-weight:600;color:#fff;">4-col third</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:8px;">
+      <div style="background:#3b82f6;border-radius:4px;height:32px;grid-column:span 8;display:flex;align-items:center;padding:0 10px;"><span style="font-size:11px;font-weight:600;color:#fff;">8-col main content</span></div>
+      <div style="background:#93c5fd;border-radius:4px;height:32px;grid-column:span 4;display:flex;align-items:center;padding:0 10px;"><span style="font-size:11px;font-weight:600;color:#1e40af;">4-col sidebar</span></div>
+    </div>
+  </div>
+
+  <!-- Section spacing -->
+  <div style="font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Section Vertical Spacing</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+    <div class="box" style="text-align:center;">
+      <div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--brand);">40px</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:6px 0 4px;">Mobile</div>
+      <div style="font-size:11px;color:var(--ink-3);">Section top & bottom padding on 375px viewport</div>
+    </div>
+    <div class="box" style="text-align:center;">
+      <div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--brand);">60px</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:6px 0 4px;">Tablet</div>
+      <div style="font-size:11px;color:var(--ink-3);">Section padding at 768px — generous but not wasteful</div>
+    </div>
+    <div class="box" style="text-align:center;">
+      <div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--brand);">80px</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:6px 0 4px;">Desktop</div>
+      <div style="font-size:11px;color:var(--ink-3);">Default section rhythm on 1024px+ viewports</div>
+    </div>
+    <div class="box" style="text-align:center;">
+      <div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--brand);">120px</div>
+      <div style="font-size:12px;font-weight:600;color:var(--ink);margin:6px 0 4px;">Hero / CTA</div>
+      <div style="font-size:11px;color:var(--ink-3);">Hero section and final CTA sections — extra breathing room</div>
+    </div>
+  </div>
+</div>
+
 </div><!-- /wrap -->
 </body>
 </html>
